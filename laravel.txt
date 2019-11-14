@@ -1,3 +1,5 @@
+docker-compose run php-cli bash -i
+
 php artisan make:controller Auth\\UsersController --resource
 php artisan make:mail VerifyMail
 

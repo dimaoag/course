@@ -4,8 +4,47 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "760db795f777b3743bd15661fdf7db60",
+    "content-hash": "05b254f811eef9aa0a909e4f9dd32b76",
     "packages": [
+        {
+            "name": "almasaeed2010/adminlte",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ColorlibHQ/AdminLTE.git",
+                "reference": "e78ee8d9caf59e55880488dfbf10901ecd4bfbd7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ColorlibHQ/AdminLTE/zipball/e78ee8d9caf59e55880488dfbf10901ecd4bfbd7",
+                "reference": "e78ee8d9caf59e55880488dfbf10901ecd4bfbd7",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Colorlib"
+                }
+            ],
+            "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 4",
+            "homepage": "http://adminlte.io/",
+            "keywords": [
+                "JS",
+                "admin",
+                "back-end",
+                "css",
+                "less",
+                "responsive",
+                "template",
+                "theme",
+                "web"
+            ],
+            "time": "2019-11-02T12:54:26+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -592,77 +631,6 @@
             "time": "2019-07-19T14:48:24+00:00"
         },
         {
-            "name": "encore/laravel-admin",
-            "version": "v1.7.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/z-song/laravel-admin.git",
-                "reference": "4c82e84f70556b1cdb6647ff82dee87921e3dddd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/z-song/laravel-admin/zipball/4c82e84f70556b1cdb6647ff82dee87921e3dddd",
-                "reference": "4c82e84f70556b1cdb6647ff82dee87921e3dddd",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/dbal": "2.*",
-                "laravel/framework": "~5.5|~6.0",
-                "php": ">=7.0.0",
-                "symfony/dom-crawler": "~3.1|~4.0"
-            },
-            "require-dev": {
-                "fzaninotto/faker": "~1.4",
-                "intervention/image": "~2.3",
-                "laravel/browser-kit-testing": "^2.0",
-                "laravel/laravel": "~5.5|~6.0",
-                "phpunit/phpunit": "~6.0|~8.0",
-                "symfony/css-selector": "~3.1"
-            },
-            "suggest": {
-                "intervention/image": "Required to handling and manipulation upload images (~2.3).",
-                "spatie/eloquent-sortable": "Required to built orderable gird."
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Encore\\Admin\\AdminServiceProvider"
-                    ],
-                    "aliases": {
-                        "Admin": "Encore\\Admin\\Facades\\Admin"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Encore\\Admin\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "zsong",
-                    "email": "zosong@126.com"
-                }
-            ],
-            "description": "laravel admin",
-            "homepage": "https://github.com/z-song/laravel-admin",
-            "keywords": [
-                "admin",
-                "form",
-                "grid",
-                "laravel"
-            ],
-            "time": "2019-11-08T07:40:27+00:00"
-        },
-        {
             "name": "erusev/parsedown",
             "version": "1.7.3",
             "source": {
@@ -1187,37 +1155,38 @@
             "time": "2018-09-29T18:48:56+00:00"
         },
         {
-            "name": "laravel-admin-extensions/multi-language",
-            "version": "0.0.3",
+            "name": "jeroennoten/laravel-adminlte",
+            "version": "v3.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laravel-admin-extensions/multi-language.git",
-                "reference": "b21bf9781a7ad3c96ca6c0c70fafa7802e29e7b4"
+                "url": "https://github.com/jeroennoten/Laravel-AdminLTE.git",
+                "reference": "899d0fdd99cc67fb7b8b274f7e740ccbfbfefa0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-admin-extensions/multi-language/zipball/b21bf9781a7ad3c96ca6c0c70fafa7802e29e7b4",
-                "reference": "b21bf9781a7ad3c96ca6c0c70fafa7802e29e7b4",
+                "url": "https://api.github.com/repos/jeroennoten/Laravel-AdminLTE/zipball/899d0fdd99cc67fb7b8b274f7e740ccbfbfefa0b",
+                "reference": "899d0fdd99cc67fb7b8b274f7e740ccbfbfefa0b",
                 "shasum": ""
             },
             "require": {
-                "encore/laravel-admin": "~1.6",
-                "php": ">=7.0.0"
+                "almasaeed2010/adminlte": "^3.0",
+                "laravel/framework": "^6.0",
+                "php": ">=7.2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~6.0"
+                "phpunit/phpunit": "^8.3"
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
-                        "KevinSoft\\MultiLanguage\\MultiLanguageServiceProvider"
+                        "JeroenNoten\\LaravelAdminLte\\AdminLteServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "KevinSoft\\MultiLanguage\\": "src/"
+                    "JeroenNoten\\LaravelAdminLte\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1226,17 +1195,131 @@
             ],
             "authors": [
                 {
-                    "name": "wangxk",
-                    "email": "wangxkww@foxmail.com"
+                    "name": "Jeroen Noten",
+                    "email": "jeroennoten@me.com"
                 }
             ],
-            "description": "description...",
-            "homepage": "https://github.com/kevinsoft/multi-language",
+            "description": "Easy AdminLTE integration with Laravel",
             "keywords": [
-                "extension",
-                "laravel-admin"
+                "AdminLTE",
+                "admin",
+                "administrator",
+                "laravel"
             ],
-            "time": "2019-07-04T05:15:53+00:00"
+            "time": "2019-11-12T12:22:09+00:00"
+        },
+        {
+            "name": "kalnoy/nestedset",
+            "version": "v5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lazychaser/laravel-nestedset.git",
+                "reference": "9c0ae248f38289147a5094fa0c5ba9bb9e93104b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lazychaser/laravel-nestedset/zipball/9c0ae248f38289147a5094fa0c5ba9bb9e93104b",
+                "reference": "9c0ae248f38289147a5094fa0c5ba9bb9e93104b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.7.0|~5.8.0|~6.0",
+                "illuminate/events": "~5.7.0|~5.8.0|~6.0",
+                "illuminate/support": "~5.7.0|~5.8.0|~6.0",
+                "php": ">=7.1.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "7.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "v5.0.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Kalnoy\\Nestedset\\NestedSetServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Kalnoy\\Nestedset\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Kalnoy",
+                    "email": "lazychaser@gmail.com"
+                }
+            ],
+            "description": "Nested Set Model for Laravel 5.7 and up",
+            "keywords": [
+                "database",
+                "hierarchy",
+                "laravel",
+                "nested sets",
+                "nsm"
+            ],
+            "time": "2019-09-06T06:18:32+00:00"
+        },
+        {
+            "name": "laracasts/flash",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laracasts/flash.git",
+                "reference": "77fe3a0f0ebf32c66d9c891782e3fa4b305df249"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laracasts/flash/zipball/77fe3a0f0ebf32c66d9c891782e3fa4b305df249",
+                "reference": "77fe3a0f0ebf32c66d9c891782e3fa4b305df249",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0|^6.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "^6.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laracasts\\Flash\\FlashServiceProvider"
+                    ],
+                    "aliases": {
+                        "Flash": "Laracasts\\Flash\\Flash"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Laracasts\\Flash": "src/"
+                },
+                "files": [
+                    "src/Laracasts/Flash/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@laracasts.com"
+                }
+            ],
+            "description": "Easy flash notifications",
+            "time": "2019-09-03T18:59:42+00:00"
         },
         {
             "name": "laravel/framework",
@@ -2751,67 +2834,6 @@
                 }
             ],
             "description": "Symfony Debug Component",
-            "homepage": "https://symfony.com",
-            "time": "2019-10-28T17:07:32+00:00"
-        },
-        {
-            "name": "symfony/dom-crawler",
-            "version": "v4.3.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "4b9efd5708c3a38593e19b6a33e40867f4f89d72"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/4b9efd5708c3a38593e19b6a33e40867f4f89d72",
-                "reference": "4b9efd5708c3a38593e19b6a33e40867f4f89d72",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1.3",
-                "symfony/polyfill-ctype": "~1.8",
-                "symfony/polyfill-mbstring": "~1.0"
-            },
-            "conflict": {
-                "masterminds/html5": "<2.6"
-            },
-            "require-dev": {
-                "masterminds/html5": "^2.6",
-                "symfony/css-selector": "~3.4|~4.0"
-            },
-            "suggest": {
-                "symfony/css-selector": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\DomCrawler\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
             "time": "2019-10-28T17:07:32+00:00"
         },
@@ -4651,16 +4673,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "1.11.2",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "862cbc2dfffa1fa28b47822a116e5b2e03b421db"
+                "reference": "67736a01597b9e08f00a1fc8966b92b918dba5ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/862cbc2dfffa1fa28b47822a116e5b2e03b421db",
-                "reference": "862cbc2dfffa1fa28b47822a116e5b2e03b421db",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/67736a01597b9e08f00a1fc8966b92b918dba5ea",
+                "reference": "67736a01597b9e08f00a1fc8966b92b918dba5ea",
                 "shasum": ""
             },
             "require": {
@@ -4718,7 +4740,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2019-10-13T10:42:06+00:00"
+            "time": "2019-11-14T10:51:35+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -4827,16 +4849,16 @@
         },
         {
             "name": "fzaninotto/faker",
-            "version": "v1.8.0",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "f72816b43e74063c8b10357394b6bba8cb1c10de"
+                "reference": "27a216cbe72327b2d6369fab721a5843be71e57d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/f72816b43e74063c8b10357394b6bba8cb1c10de",
-                "reference": "f72816b43e74063c8b10357394b6bba8cb1c10de",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/27a216cbe72327b2d6369fab721a5843be71e57d",
+                "reference": "27a216cbe72327b2d6369fab721a5843be71e57d",
                 "shasum": ""
             },
             "require": {
@@ -4845,13 +4867,11 @@
             "require-dev": {
                 "ext-intl": "*",
                 "phpunit/phpunit": "^4.8.35 || ^5.7",
-                "squizlabs/php_codesniffer": "^1.5"
+                "squizlabs/php_codesniffer": "^2.9.2"
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "1.8-dev"
-                }
+                "branch-alias": []
             },
             "autoload": {
                 "psr-4": {
@@ -4873,7 +4893,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2018-07-12T10:23:15+00:00"
+            "time": "2019-11-14T13:13:06+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
