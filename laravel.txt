@@ -3,7 +3,10 @@ docker-compose run php-cli bash -i
 php artisan make:controller Auth\\UsersController --resource
 php artisan make:mail VerifyMail
 
+categories/lkctHwN6grdXWYrRS7Wp5zisyPymNp1beu4Pj5fu.jpeg
+
 php artisan make:migration add_column_for_table --table=users
+php artisan migrate:rollback --step=1
 php artisan migrate
 
 composer dump-autoload -o //before seeds and factories
