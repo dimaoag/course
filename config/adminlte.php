@@ -190,6 +190,7 @@ return [
             'text' => 'Категории',
             'url'  => 'admin/categories',
             'icon' => 'fas fa-fw fa-server',
+            'active' => \App\Http\Controllers\Admin\CategoryController::class,
         ],
         ['header' => 'Пользовательские настройки'],
         [

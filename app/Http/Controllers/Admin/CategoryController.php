@@ -18,7 +18,8 @@ class CategoryController extends Controller
     {
         $categories = Category::defaultOrder()->withDepth()->get();
 
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.categories.index', compact('categories'))
+            ->with('success', 'sdfsdfdsfs');
     }
 
     public function create()
