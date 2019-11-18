@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Admin\Category\RegionFormRequest;
-use App\Model\Category\Entity\Category;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
+use App\Model\Region\Entity\Region;
 use Illuminate\Support\Str;
 
-class CategoryController extends Controller
+class RegionController extends Controller
 {
 //    public function __construct()
 //    {
@@ -17,22 +15,17 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = Category::defaultOrder()->withDepth()->get();
+        $query = Region::orderByDesc('name_ru');
 
-//        Session::flash('error','Message info');
-//        Session::flash('alert-danger', 'danger');
-        Session::flash('message', 'This is a message!');
-//        session('message', 'sfsf');
-//        return redirect(route('admin.categories.create'))->with('success', 'Profile updated!');
-
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.categories.index', compact('categories'))
+            ->with('success', 'sdfsdfdsfs');
     }
 
     public function create()
     {
         $parents = Category::defaultOrder()->withDepth()->get();
 
-        return view('admin.categories.create', compact('parents'))->with('success', 'sdfsdfdsfs');
+        return view('admin.categories.create', compact('parents'));
     }
 
     public function store(RegionFormRequest $request)

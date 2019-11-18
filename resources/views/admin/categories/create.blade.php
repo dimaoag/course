@@ -28,6 +28,8 @@ $title = 'Создать новую категорию'
 @stop
 
 @section('content')
+    @include ('layouts.partials.flash')
+
 
     <div class="row">
         <div class="col-md-12">

@@ -28,6 +28,7 @@ $title = 'Все категории'
 
 
 @section('content')
+    @include ('layouts.partials.flash')
 
     <p><a href="{{ route('admin.categories.create') }}" class="btn btn-success">Добавить категорию</a></p>
 

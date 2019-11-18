@@ -3,7 +3,7 @@
         {{ session('status') }}
     </div>
 @endif
-
+<h1>lsjdf ls lksjd  {{ session('key') }}</h1>
 @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -16,8 +16,8 @@
     </div>
 @endif
 
-@if (session('info'))
+@if ( Session::has('message'))
     <div class="alert alert-info">
-        {{ session('info') }}
+        {{ Session::get('message') }}
     </div>
 @endif

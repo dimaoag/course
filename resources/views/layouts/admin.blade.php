@@ -26,4 +26,5 @@
 
 @section('js')
     <script src="{{ mix('admin/js/app.js', 'build') }}"></script>
+    @yield('scripts')
 @stop
