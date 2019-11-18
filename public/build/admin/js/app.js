@@ -44703,14 +44703,14 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
+/***/ "./resources/assets/admin/js/app.js":
+/*!******************************************!*\
+  !*** ./resources/assets/admin/js/app.js ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/assets/admin/js/bootstrap.js");
 
 $('.summernote').summernote({
   height: 300
@@ -44734,10 +44734,10 @@ $('.summernote').summernote({
 
 /***/ }),
 
-/***/ "./resources/js/bootstrap.js":
-/*!***********************************!*\
-  !*** ./resources/js/bootstrap.js ***!
-  \***********************************/
+/***/ "./resources/assets/admin/js/bootstrap.js":
+/*!************************************************!*\
+  !*** ./resources/assets/admin/js/bootstrap.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -44781,10 +44781,21 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
+/***/ "./resources/assets/admin/sass/app.scss":
+/*!**********************************************!*\
+  !*** ./resources/assets/admin/sass/app.scss ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/assets/sass/app.scss":
+/*!****************************************!*\
+  !*** ./resources/assets/sass/app.scss ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -44793,14 +44804,15 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ }),
 
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/*!************************************************************************************************************************!*\
+  !*** multi ./resources/assets/admin/js/app.js ./resources/assets/admin/sass/app.scss ./resources/assets/sass/app.scss ***!
+  \************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/Dima/work/course/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/Dima/work/course/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/Dima/work/course/resources/assets/admin/js/app.js */"./resources/assets/admin/js/app.js");
+__webpack_require__(/*! /Users/Dima/work/course/resources/assets/admin/sass/app.scss */"./resources/assets/admin/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/Dima/work/course/resources/assets/sass/app.scss */"./resources/assets/sass/app.scss");
 
 
 /***/ })

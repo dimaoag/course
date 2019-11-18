@@ -21,9 +21,9 @@
 
 
 @section('css')
-
+    <link href="{{ mix('admin/css/app.css', 'build') }}" rel="stylesheet">
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script src="{{ mix('admin/js/app.js', 'build') }}"></script>
 @stop

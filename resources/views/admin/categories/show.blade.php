@@ -63,12 +63,6 @@ $title = $category->name_ru;
                 </td>
             </tr>
             <tr>
-                <th>{{\App\Model\Category\Helper\AdminHelper::getFormLabel('description_ru')}}</th><td>{{ $category->description_ru }}</td>
-            </tr>
-            <tr>
-                <th>{{\App\Model\Category\Helper\AdminHelper::getFormLabel('description_uk')}}</th><td>{{ $category->description_uk }}</td>
-            </tr>
-            <tr>
                 <th>{{\App\Model\Category\Helper\AdminHelper::getFormLabel('meta_title_ru')}}</th><td>{{ $category->meta_title_ru }}</td>
             </tr>
             <tr>
@@ -88,6 +82,24 @@ $title = $category->name_ru;
             </tr>
         </tbody>
     </table>
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">{{\App\Model\Category\Helper\AdminHelper::getFormLabel('description_ru')}}</h3>
+        </div>
+        <div class="card-body">
+            {!! nl2br($category->description_ru) !!}
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">{{\App\Model\Category\Helper\AdminHelper::getFormLabel('description_uk')}}</h3>
+        </div>
+        <div class="card-body">
+            {!! nl2br($category->description_uk) !!}
+        </div>
+    </div>
 
 @endsection
 
