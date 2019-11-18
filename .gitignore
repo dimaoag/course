@@ -18,5 +18,8 @@ yarn-error.log
 /.vagrant
 /public/admin
 /public/build
+/public/css
+/public/js
+
 
 
