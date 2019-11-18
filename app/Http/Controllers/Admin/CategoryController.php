@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\Category\CategoryFormRequest;
 use App\Model\Category\Entity\Category;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -29,30 +30,19 @@ class CategoryController extends Controller
         return view('admin.categories.create', compact('parents'));
     }
 
-    public function store(Request $request)
+    public function store(CategoryFormRequest $request)
     {
-        $this->validate($request, [
-            'name_ru' => 'required|string|max:255',
-            'name_uk' => 'required|string|max:255',
-            'slug' => 'required|string|max:255',
-            'description_ru' => 'nullable|string',
-            'description_uk' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png',
-            'meta_title_ru' => 'nullable|string|max:255',
-            'meta_title_uk' => 'nullable|string|max:255',
-            'meta_description_ru' => 'nullable|string|max:255',
-            'meta_description_uk' => 'nullable|string|max:255',
-            'meta_keywords_ru' => 'nullable|string|max:255',
-            'meta_keywords_uk' => 'nullable|string|max:255',
-            'parent' => 'nullable|integer|exists:course_categories,id',
-        ]);
-
         $image = $request['image'];
+
+        $slug = Str::slug($request['name_ru'], '_');
+        if (Category::where('slug', $slug)->exists()) {
+            $slug = $slug . time();
+        }
 
         $category = Category::create([
             'name_ru' => $request['name_ru'],
             'name_uk' => $request['name_uk'],
-            'slug' => $request['slug'],
+            'slug' => $slug,
             'description_ru' => $request['description_ru'],
             'description_uk' => $request['description_uk'],
             'parent_id' => $request['parent'],
@@ -80,30 +70,25 @@ class CategoryController extends Controller
         return view('admin.categories.edit', compact('category', 'parents'));
     }
 
-    public function update(Request $request, Category $category)
+    public function update(CategoryFormRequest $request, Category $category)
     {
-        $this->validate($request, [
-            'name_ru' => 'required|string|max:255',
-            'name_uk' => 'required|string|max:255',
-            'slug' => 'required|string|max:255',
-            'description_ru' => 'nullable|string',
-            'description_uk' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png',
-            'meta_title_ru' => 'nullable|string|max:255',
-            'meta_title_uk' => 'nullable|string|max:255',
-            'meta_description_ru' => 'nullable|string|max:255',
-            'meta_description_uk' => 'nullable|string|max:255',
-            'meta_keywords_ru' => 'nullable|string|max:255',
-            'meta_keywords_uk' => 'nullable|string|max:255',
-            'parent' => 'nullable|integer|exists:course_categories,id',
-        ]);
 
         $image = $request['image'];
+
+        $slug = Str::slug($request['name_ru'], '_');
+
+        if ($request['name_ru'] != $category->name_ru){
+            $slug = Str::slug($request['name_ru'], '_');
+            if (Category::where('slug', $slug)->exists()) {
+                $slug = $slug . time();
+            }
+        }
+
 
         $category->update([
             'name_ru' => $request['name_ru'],
             'name_uk' => $request['name_uk'],
-            'slug' => $request['slug'],
+            'slug' => $slug,
             'description_ru' => $request['description_ru'],
             'description_uk' => $request['description_uk'],
             'parent_id' => $request['parent'],

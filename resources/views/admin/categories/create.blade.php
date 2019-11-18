@@ -71,15 +71,6 @@ $title = 'Создать новую категорию'
                             @endif
                         </div>
 
-                        <?php $name = 'slug' ?>
-                        <div class="form-group">
-                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
-                            <input id="{{$name}}" type="text" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" value="{{ old($name) }}" required>
-                            @if ($errors->has($name))
-                                <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>
-                            @endif
-                        </div>
-
                         <?php $name = 'description_ru' ?>
                         <div class="form-group">
                             <label for="{{$name}}" class=" col-form-label">{{ \App\Model\Category\Helper\AdminHelper::getFormLabel($name) }}</label>

@@ -198,6 +198,12 @@ return [
             'icon' => 'fas fa-fw fa-server',
             'active' => ['/admin/categories', '/admin/categories/*'],
         ],
+        [
+            'text' => 'Города',
+            'url'  => 'admin/regions',
+            'icon' => 'fas fa-map-marker-alt',
+            'active' => ['/admin/regions', '/admin/regions/*'],
+        ],
         ['header' => 'Пользовательские настройки'],
         [
             'text' => 'profile',

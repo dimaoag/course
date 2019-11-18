@@ -18,7 +18,7 @@ class CreateCourseCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name_uk')->nullable(false);
             $table->string('name_ru')->nullable(false);
-            $table->string('slug')->nullable(false);
+            $table->string('slug')->nullable(false)->unique();
             $table->text('description_uk')->nullable(true);
             $table->text('description_ru')->nullable(true);
             $table->string('image')->nullable(true);

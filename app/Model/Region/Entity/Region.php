@@ -1,24 +1,19 @@
 <?php
 
-namespace App\Model;
+namespace App\Model\Region\Entity;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
  * @property int $id
- * @property string $name
+ * @property string $name_ru
+ * @property string $name_uk
  * @property string $slug
- * @property int|null $parent_id
- *
- * @property Region $parent
- * @property Region[] $children
- *
- * @method Builder roots()
  */
 class Region extends Model
 {
-    protected $fillable = ['name', 'slug', 'parent_id'];
+    protected $fillable = ['name_ru', 'name_uk', 'slug'];
 
     public function getPath(): string
     {
