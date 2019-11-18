@@ -185,12 +185,18 @@ return [
 //            'label'       => 4,
 //            'label_color' => 'success',
 //        ],
+        [
+            'text'      => 'Главная',
+            'url'       => '/admin',
+            'icon'      => 'fas fa-home',
+            'active'    => ['/admin']
+        ],
         ['header' => 'Курсы'],
         [
             'text' => 'Категории',
             'url'  => 'admin/categories',
             'icon' => 'fas fa-fw fa-server',
-            'active' => \App\Http\Controllers\Admin\CategoryController::class,
+            'active' => ['/admin/categories', '/admin/categories/*'],
         ],
         ['header' => 'Пользовательские настройки'],
         [
