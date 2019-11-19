@@ -5,18 +5,26 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Category\RegionFormRequest;
 use App\Model\Region\Entity\Region;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class RegionController extends Controller
 {
+
 //    public function __construct()
 //    {
 //        $this->middleware('can:manage-adverts-categories');
 //    }
 
-    public function index()
+    public function index(Request $request)
     {
-        $regions = Region::orderByDesc('name_ru')->get();
+        $query = Region::orderBy('name_ru');
+
+        if (!empty($value = $request->get('name'))) {
+            $query->where('name_ru', 'like', '%' . $value . '%');
+        }
+
+        $regions = $query->paginate(25);
 
         return view('admin.regions.index', compact('regions'));
     }
