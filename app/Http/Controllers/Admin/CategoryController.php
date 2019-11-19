@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\Admin\Category\RegionFormRequest;
 use App\Model\Category\Entity\Category;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -15,16 +16,11 @@ class CategoryController extends Controller
 //        $this->middleware('can:manage-adverts-categories');
 //    }
 
-    public function index()
+    public function index(Request $request)
     {
         $categories = Category::defaultOrder()->withDepth()->get();
 
-//        Session::flash('error','Message info');
-//        Session::flash('alert-danger', 'danger');
-        Session::flash('message', 'This is a message!');
-//        session('message', 'sfsf');
-//        return redirect(route('admin.categories.create'))->with('success', 'Profile updated!');
-
+//        $request->session()->flash('success', 'Success');
         return view('admin.categories.index', compact('categories'));
     }
 

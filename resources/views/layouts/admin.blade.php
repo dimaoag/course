@@ -3,20 +3,19 @@
 @section('content_header')
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h5>Главная</h5>
+            <div class="row justify-content-between">
+                <div class="col-sm-12">
+                    @section('breadcrumbs', Breadcrumbs::render())
+                    @yield('breadcrumbs')
                 </div>
             </div>
         </div>
     </section>
 @stop
 
-
 @section('content')
-    @include('flash::message')
     @include('layouts.partials.flash')
-    @yield('content')
+    @yield('admin-content')
 @stop
 
 

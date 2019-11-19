@@ -11,11 +11,11 @@ use App\Model\Category\Entity\Category;
 //});
 
 
-
+#======================================================================
 // Admin
 
 Breadcrumbs::register('admin.home', function (Crumbs $crumbs) {
-    $crumbs->push('Admin', route('admin.home'));
+    $crumbs->push('Главная', route('admin.home'));
 });
 
 
@@ -23,12 +23,12 @@ Breadcrumbs::register('admin.home', function (Crumbs $crumbs) {
 
 Breadcrumbs::register('admin.categories.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
-    $crumbs->push('Categories', route('admin.categories.index'));
+    $crumbs->push('Категории', route('admin.categories.index'));
 });
 
 Breadcrumbs::register('admin.categories.create', function (Crumbs $crumbs) {
     $crumbs->parent('admin.categories.index');
-    $crumbs->push('Create', route('admin.adverts.categories.create'));
+    $crumbs->push('Создать', route('admin.categories.create'));
 });
 
 Breadcrumbs::register('admin.categories.show', function (Crumbs $crumbs, Category $category) {
@@ -38,7 +38,7 @@ Breadcrumbs::register('admin.categories.show', function (Crumbs $crumbs, Categor
 
 Breadcrumbs::register('admin.categories.edit', function (Crumbs $crumbs, Category $category) {
     $crumbs->parent('admin.categories.show', $category);
-    $crumbs->push('Edit', route('admin.categories.edit', $category));
+    $crumbs->push('Изменить', route('admin.categories.edit', $category));
 });
 
 

@@ -9,27 +9,9 @@ $title = 'Изменить ' . $category->name_ru;
 
 @section('title', $title)
 
-@section('content_header')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h5>{{$title}}</h5>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Главная</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('admin.categories.index')}}">Все категории</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('admin.categories.show', $category)}}">{{$category->name_ru}}</a></li>
-                        <li class="breadcrumb-item active">Изменить</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </section>
-@stop
 
-@section('content')
+@section('admin-content')
+
     <div class="row">
         <div class="col-md-12">
             <div class="card card-primary">
@@ -79,7 +61,7 @@ $title = 'Изменить ' . $category->name_ru;
                         <?php $name = 'description_ru' ?>
                         <div class="form-group">
                             <label for="{{$name}}" class="col-form-label">{{ \App\Model\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
-                            <textarea id="{{$name}}" class="summernote form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" rows="5" required>{{ old($name, $category->description_ru) }}</textarea>
+                            <textarea id="{{$name}}" class="summernote form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" rows="5">{{ old($name, $category->description_ru) }}</textarea>
                             @if ($errors->has($name))
                                 <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>
                             @endif
@@ -185,6 +167,5 @@ $title = 'Изменить ' . $category->name_ru;
             </div>
         </div>
     </div>
-
 
 @endsection
