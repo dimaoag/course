@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Category\RegionFormRequest;
 use App\Model\Region\Entity\Region;
 use Illuminate\Support\Str;
 
@@ -15,141 +16,68 @@ class RegionController extends Controller
 
     public function index()
     {
-        $query = Region::orderByDesc('name_ru');
+        $regions = Region::orderByDesc('name_ru')->get();
 
-        return view('admin.categories.index', compact('categories'))
-            ->with('success', 'sdfsdfdsfs');
+        return view('admin.regions.index', compact('regions'));
     }
 
     public function create()
     {
-        $parents = Category::defaultOrder()->withDepth()->get();
-
-        return view('admin.categories.create', compact('parents'));
+        return view('admin.regions.create');
     }
+
 
     public function store(RegionFormRequest $request)
     {
-        $image = $request['image'];
-
         $slug = Str::slug($request['name_ru'], '_');
-        if (Category::where('slug', $slug)->exists()) {
+
+        if (Region::where('slug', $slug)->exists()) {
             $slug = $slug . time();
         }
 
-        $category = Category::create([
+        $region = Region::create([
             'name_ru' => $request['name_ru'],
             'name_uk' => $request['name_uk'],
             'slug' => $slug,
-            'description_ru' => $request['description_ru'],
-            'description_uk' => $request['description_uk'],
-            'parent_id' => $request['parent'],
-            'image' => $image ? $image->store('categories', 'public') : null,
-            'meta_title_ru' => $request['meta_title_ru'],
-            'meta_title_uk' => $request['meta_title_uk'],
-            'meta_description_ru' => $request['meta_description_ru'],
-            'meta_description_uk' => $request['meta_description_uk'],
-            'meta_keywords_ru' => $request['meta_keywords_ru'],
-            'meta_keywords_uk' => $request['meta_keywords_uk'],
         ]);
 
-        return redirect()->route('admin.categories.show', $category);
+        return redirect()->route('admin.regions.show', $region);
     }
 
-    public function show(Category $category)
+    public function show(Region $region)
     {
-        return view('admin.categories.show', compact('category'));
+        return view('admin.regions.show', compact('region'));
     }
 
-    public function edit(Category $category)
+    public function edit(Region $region)
     {
-        $parents = Category::defaultOrder()->withDepth()->get();
-
-        return view('admin.categories.edit', compact('category', 'parents'));
+        return view('admin.regions.edit', compact('region'));
     }
 
-    public function update(RegionFormRequest $request, Category $category)
+    public function update(RegionFormRequest $request, Region $region)
     {
-
-        $image = $request['image'];
-
         $slug = Str::slug($request['name_ru'], '_');
 
-        if ($request['name_ru'] != $category->name_ru){
+        if ($request['name_ru'] != $region->name_ru){
             $slug = Str::slug($request['name_ru'], '_');
-            if (Category::where('slug', $slug)->exists()) {
+            if (Region::where('slug', $slug)->exists()) {
                 $slug = $slug . time();
             }
         }
 
-
-        $category->update([
+        $region->update([
             'name_ru' => $request['name_ru'],
             'name_uk' => $request['name_uk'],
             'slug' => $slug,
-            'description_ru' => $request['description_ru'],
-            'description_uk' => $request['description_uk'],
-            'parent_id' => $request['parent'],
-            'meta_title_ru' => $request['meta_title_ru'],
-            'meta_title_uk' => $request['meta_title_uk'],
-            'meta_description_ru' => $request['meta_description_ru'],
-            'meta_description_uk' => $request['meta_description_uk'],
-            'meta_keywords_ru' => $request['meta_keywords_ru'],
-            'meta_keywords_uk' => $request['meta_keywords_uk'],
         ]);
 
-        if ($image){
-            $category->update(['image' => $image->store('categories', 'public')]);
-        }
-
-        return redirect()->route('admin.categories.show', $category);
+        return redirect()->route('admin.regions.show', $region);
     }
 
-    public function first(Category $category)
+    public function destroy(Region $region)
     {
-        if ($first = $category->siblings()->defaultOrder()->first()) {
-            $category->insertBeforeNode($first);
-        }
+        $region->delete();
 
-        return redirect()->route('admin.categories.index');
-    }
-
-    public function up(Category $category)
-    {
-        $category->up();
-
-        return redirect()->route('admin.categories.index');
-    }
-
-    public function down(Category $category)
-    {
-        $category->down();
-
-        return redirect()->route('admin.categories.index');
-    }
-
-    public function last(Category $category)
-    {
-        if ($last = $category->siblings()->defaultOrder('desc')->first()) {
-            $category->insertAfterNode($last);
-        }
-
-        return redirect()->route('admin.categories.index');
-    }
-
-    public function deletePhoto(Category $category)
-    {
-        if(Storage::disk('public')->exists($category->image)) {
-            Storage::disk('public')->delete($category->image);
-            $category->update(['image' => null]);
-        }
-        return redirect()->route('admin.categories.edit', $category);
-    }
-
-    public function destroy(Category $category)
-    {
-        $category->delete();
-
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('admin.regions.index');
     }
 }

@@ -28,7 +28,7 @@ class CategoryController extends Controller
     {
         $parents = Category::defaultOrder()->withDepth()->get();
 
-        return view('admin.categories.create', compact('parents'))->with('success', 'sdfsdfdsfs');
+        return view('admin.categories.create', compact('parents'));
     }
 
     public function store(RegionFormRequest $request)

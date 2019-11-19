@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\Region\Entity\Region;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
 use App\Model\Category\Entity\Category;
 
@@ -39,6 +40,29 @@ Breadcrumbs::register('admin.categories.show', function (Crumbs $crumbs, Categor
 Breadcrumbs::register('admin.categories.edit', function (Crumbs $crumbs, Category $category) {
     $crumbs->parent('admin.categories.show', $category);
     $crumbs->push('Изменить', route('admin.categories.edit', $category));
+});
+
+
+// Regions
+
+Breadcrumbs::register('admin.regions.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Города', route('admin.regions.index'));
+});
+
+Breadcrumbs::register('admin.regions.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.regions.index');
+    $crumbs->push('Создать', route('admin.regions.create'));
+});
+
+Breadcrumbs::register('admin.regions.show', function (Crumbs $crumbs, Region $region) {
+    $crumbs->parent('admin.regions.index');
+    $crumbs->push($region->name_ru, route('admin.regions.show', $region));
+});
+
+Breadcrumbs::register('admin.regions.edit', function (Crumbs $crumbs, Region $region) {
+    $crumbs->parent('admin.regions.show', $region);
+    $crumbs->push('Изменить', route('admin.regions.edit', $region));
 });
 
 

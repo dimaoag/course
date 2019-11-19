@@ -12,6 +12,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Region extends Model
 {
+
+    protected $table = 'course_regions';
+
+    public $timestamps = false;
+
     protected $fillable = ['name_ru', 'name_uk', 'slug'];
+
 
 }
