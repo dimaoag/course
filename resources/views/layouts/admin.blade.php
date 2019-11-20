@@ -1,5 +1,16 @@
 @extends('adminlte::page')
 
+
+@section('content_top_nav_right')
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('home')}}">
+            <i class="fas fa-arrow-circle-right"></i>
+            <span>Вернутся на сайт</span>
+        </a>
+    </li>
+@stop
+
+
 @section('content_header')
     <section class="content-header">
         <div class="container-fluid">
