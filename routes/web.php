@@ -7,6 +7,11 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+//Route::post('/register', 'Auth\RegisterController@register');
+Route::get('/verify/{token}', 'Auth\RegisterController@verify')->name('verify');
+
+
 Route::group(
     [
         'prefix' =>  'admin',

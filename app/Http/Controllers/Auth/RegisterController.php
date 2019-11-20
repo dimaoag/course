@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\Auth\RegisterRequest;
 use App\Model\User\Entity\User;
-//use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use App\UseCases\Auth\RegisterService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,33 +15,47 @@ class RegisterController extends Controller
 {
 
 //    use RegistersUsers;
+//    protected $redirectTo = '/home';
 
 
-    protected $redirectTo = '/home';
+    private $service;
 
-
-    public function __construct()
+    public function __construct(RegisterService $service)
     {
         $this->middleware('guest');
+        $this->service = $service;
     }
 
 
-    protected function validator(array $data)
+
+
+    public function showRegistrationForm()
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        return view('auth.register');
+    }
+
+    public function register(RegisterRequest $request)
+    {
+        $this->service->register($request);
+
+        return redirect()->route('login')
+            ->with('success', 'Check your email and click on the link to verify.');
     }
 
 
-    protected function create(array $data)
+    public function verify($token)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        if (!$user = User::where('verify_token', $token)->first()) {
+            return redirect()->route('login')
+                ->with('error', 'Sorry your link cannot be identified.');
+        }
+
+
+        try {
+            $this->service->verify($user->id);
+            return redirect()->route('login')->with('success', 'Your e-mail is verified. You can now login.');
+        } catch (\DomainException $e) {
+            return redirect()->route('login')->with('error', $e->getMessage());
+        }
     }
 }
