@@ -34,6 +34,7 @@ class Category extends Model
 
     const ONLINE = 1;
     const OFFLINE = 2;
+    const MASTER = 3;
 
 
     protected $table = 'course_categories';
@@ -52,6 +53,11 @@ class Category extends Model
     public static function getOfflineCategory(): self
     {
         return self::findOrFail(self::OFFLINE);
+    }
+
+    public static function getMasterCategory(): self
+    {
+        return self::findOrFail(self::MASTER);
     }
 
 
@@ -101,7 +107,7 @@ class Category extends Model
 
     public static function getRootCategories(): Collection
     {
-        return self::find([self::ONLINE, self::OFFLINE]);
+        return self::find([self::ONLINE, self::OFFLINE, self::MASTER]);
     }
 
 

@@ -28,6 +28,14 @@ class AddBasesCategories extends Migration
                     'slug' => 'courses',
                     '_lft' => 3,
                     '_rgt' => 4,
+                ],
+                [
+                    'id' => 3,
+                    'name_ru' => 'Мастер класы',
+                    'name_uk' => 'Мастер класы urk',
+                    'slug' => 'master',
+                    '_lft' => 5,
+                    '_rgt' => 6,
                 ]
             ]
         );
