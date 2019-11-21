@@ -3,6 +3,7 @@
 namespace App\Model\Category\Entity;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
 use Kalnoy\Nestedset\NodeTrait;
 
 /**
@@ -20,6 +21,8 @@ use Kalnoy\Nestedset\NodeTrait;
  * @property string $meta_keywords_ru
  * @property string $meta_keywords_uk
  * @property int|null $parent_id
+ * @property int $_lft
+ * @property int $_rgh
  *
  * @property int $depth
  * @property Category $parent
@@ -29,11 +32,91 @@ class Category extends Model
 {
     use NodeTrait;
 
+    const ONLINE = 1;
+    const OFFLINE = 2;
+
+
     protected $table = 'course_categories';
 
     public $timestamps = false;
 
     protected $fillable = ['name_uk', 'name_ru', 'slug', 'description_uk', 'description_ru', 'image', 'parent_id', 'meta_title_ru', 'meta_title_uk', 'meta_description_ru', 'meta_description_uk', 'meta_keywords_ru', 'meta_keywords_uk'];
+
+
+
+    public static function getOnlineCategory(): self
+    {
+        return self::findOrFail(self::ONLINE);
+    }
+
+    public static function getOfflineCategory(): self
+    {
+        return self::findOrFail(self::OFFLINE);
+    }
+
+
+
+    public function getAllChildren(): Collection
+    {
+        return $this->descendants()->withDepth()->orderBy('_lft')->get();
+    }
+
+
+    public function getAllChildrenWithSelf(): ?Collection
+    {
+        $categories = $this->descendants()->withDepth()->orderBy('_lft')->get();
+        return $categories ? $categories->prepend($this) : null;
+    }
+
+
+    public function getRoot(): ?self
+    {
+        $categories = $this->getAncestors();
+        /** @var self $category */
+        foreach ($categories as $category){
+            if ($category->getDepth() === 0){
+                return $category;
+            }
+        }
+        return null;
+    }
+
+
+    public function getCategoriesForEdit(): ?Collection
+    {
+        $rootCategory = $this->getRoot();
+
+        if (!$rootCategory){
+            return null;
+        }
+
+        $children = $rootCategory->getAllChildren();
+        $filtered = $children->filter(function (Category $item) {
+            return $item->id !== $this->id;
+        });
+
+        return $filtered->prepend($rootCategory);
+    }
+
+
+    public static function getRootCategories(): Collection
+    {
+        return self::find([self::ONLINE, self::OFFLINE]);
+    }
+
+
+
+    public function getDepth(): int
+    {
+        $result = Category::withDepth()->find($this->id);
+        return $depth = $result->depth;
+    }
+
+
+    public function isCanDeleted(): bool
+    {
+        return !$this->isRoot();
+    }
 
 
 }

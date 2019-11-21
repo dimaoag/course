@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Admin\Category\RegionFormRequest;
+use App\Http\Requests\Admin\Category\CategoryFormCreateRequest;
+use App\Http\Requests\Admin\Category\CategoryFormEditRequest;
 use App\Model\Category\Entity\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+
 
 class CategoryController extends Controller
 {
@@ -18,20 +20,28 @@ class CategoryController extends Controller
 
     public function index(Request $request)
     {
-        $categories = Category::defaultOrder()->withDepth()->get();
-
+        $categories = Category::getRootCategories();
 //        $request->session()->flash('success', 'Success');
         return view('admin.categories.index', compact('categories'));
     }
 
-    public function create()
-    {
-        $parents = Category::defaultOrder()->withDepth()->get();
 
+    public function list(Request $request, Category $category)
+    {
+        $categories = $category->getAllChildren();
+        $rootCategory = $category;
+
+        return view('admin.categories.list', compact('categories', 'rootCategory'));
+    }
+
+
+    public function create(Category $category)
+    {
+        $parents = $category->getAllChildrenWithSelf();
         return view('admin.categories.create', compact('parents'));
     }
 
-    public function store(RegionFormRequest $request)
+    public function store(CategoryFormCreateRequest $request)
     {
         $image = $request['image'];
 
@@ -66,23 +76,33 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        $parents = Category::defaultOrder()->withDepth()->get();
-
+        $parents = $category->getCategoriesForEdit();
         return view('admin.categories.edit', compact('category', 'parents'));
     }
 
-    public function update(RegionFormRequest $request, Category $category)
+    public function update(CategoryFormEditRequest $request, Category $category)
     {
 
         $image = $request['image'];
 
-        $slug = Str::slug($request['name_ru'], '_');
+        if ($category->isRoot()){
 
-        if ($request['name_ru'] != $category->name_ru){
+            $slug = $category->slug;
+
+        } else {
+
             $slug = Str::slug($request['name_ru'], '_');
-            if (Category::where('slug', $slug)->exists()) {
-                $slug = $slug . time();
+
+            if ($request['name_ru'] != $category->name_ru){
+                $slug = Str::slug($request['name_ru'], '_');
+                if (Category::where('slug', $slug)->exists()) {
+                    $slug = $slug . time();
+                }
             }
+
+            $this->validate($request, [
+                'parent' => 'integer|exists:course_categories,id',
+            ]);
         }
 
 
@@ -108,27 +128,25 @@ class CategoryController extends Controller
         return redirect()->route('admin.categories.show', $category);
     }
 
+
     public function first(Category $category)
     {
         if ($first = $category->siblings()->defaultOrder()->first()) {
             $category->insertBeforeNode($first);
         }
-
-        return redirect()->route('admin.categories.index');
+        return back();
     }
 
     public function up(Category $category)
     {
         $category->up();
-
-        return redirect()->route('admin.categories.index');
+        return back();
     }
 
     public function down(Category $category)
     {
         $category->down();
-
-        return redirect()->route('admin.categories.index');
+        return back();
     }
 
     public function last(Category $category)
@@ -137,7 +155,7 @@ class CategoryController extends Controller
             $category->insertAfterNode($last);
         }
 
-        return redirect()->route('admin.categories.index');
+        return back();
     }
 
     public function deletePhoto(Category $category)
@@ -151,8 +169,10 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        $category->delete();
-
-        return redirect()->route('admin.categories.index');
+        $root = $category->getRoot();
+        if ($category->isCanDeleted()){
+            $category->delete();
+        }
+        return redirect()->route('admin.categories.list', $root);
     }
 }

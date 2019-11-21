@@ -24,7 +24,11 @@ Route::group(
         Route::get('/', 'HomeController@index')->name('home');
         Route::resource('categories', 'CategoryController');
 
+
         Route::group(['prefix' => 'categories/{category}', 'as' => 'categories.'], function () {
+            Route::get('/list', 'CategoryController@list')->name('list');
+            Route::get('/create', 'CategoryController@create')->name('create');
+            Route::get('/show', 'CategoryController@show')->name('show');
             Route::post('/first', 'CategoryController@first')->name('first');
             Route::post('/up', 'CategoryController@up')->name('up');
             Route::post('/down', 'CategoryController@down')->name('down');

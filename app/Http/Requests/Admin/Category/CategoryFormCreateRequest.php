@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryFormRequest extends FormRequest
+class CategoryFormCreateRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -25,7 +25,7 @@ class CategoryFormRequest extends FormRequest
             'meta_description_uk' => 'nullable|string|max:255',
             'meta_keywords_ru' => 'nullable|string|max:255',
             'meta_keywords_uk' => 'nullable|string|max:255',
-            'parent' => 'nullable|integer|exists:course_categories,id',
+            'parent' => 'integer|exists:course_categories,id',
         ];
 
 

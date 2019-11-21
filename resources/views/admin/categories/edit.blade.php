@@ -21,11 +21,12 @@ $title = 'Изменить ' . $category->name_ru;
                         @csrf
                         @method('PUT')
 
+
+                        @if(!$category->isRoot())
                         <?php $name = 'parent' ?>
                         <div class="form-group">
                             <label for="{{$name}}" class="col-form-label">{{\App\Model\Category\Helper\AdminHelper::getFormLabel($name)}}</label>
                             <select id="{{$name}}" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}">
-                                <option value=""></option>
                                 @foreach ($parents as $parent)
                                     <option value="{{ $parent->id }}"{{ $parent->id == old($name, $category->parent_id) ? ' selected' : '' }}>
                                         @for ($i = 0; $i < $parent->depth; $i++) &mdash; @endfor
@@ -37,6 +38,7 @@ $title = 'Изменить ' . $category->name_ru;
                                 <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>
                             @endif
                         </div>
+                        @endif
 
                         <?php $name = 'name_ru' ?>
                         <div class="form-group">

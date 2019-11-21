@@ -1,6 +1,7 @@
 <?php
 
 /** @var \App\Model\Category\Entity\Category $category */
+/** @var \App\Model\Category\Entity\Category $rootCategory */
 $title = $category->name_ru;
 ?>
 
@@ -15,7 +16,7 @@ $title = $category->name_ru;
         <form method="POST" action="{{ route('admin.categories.destroy', $category) }}" class="mr-1">
             @csrf
             @method('DELETE')
-            <button class="btn btn-danger">Удалить</button>
+            <button class="btn btn-danger btn-confirm" data-message="Вы подтверждаете действие?">Удалить</button>
         </form>
     </div>
 

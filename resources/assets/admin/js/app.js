@@ -19,3 +19,11 @@ $('.summernote').summernote({
         }
     }*/
 });
+
+
+$('.btn-confirm').click(function (e) {
+    let message = $(this).data('message');
+    if (!confirm(message)){
+        return false;
+    }
+});

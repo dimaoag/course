@@ -19,8 +19,7 @@ $title = 'Создать новую категорию'
                         <?php $name = 'parent' ?>
                         <div class="form-group">
                             <label for="{{$name}}" class="col-form-label">{{ \App\Model\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
-                            <select id="{{$name}}" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}">
-                                <option value=""></option>
+                            <select id="{{$name}}" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" required>
                                 @foreach ($parents as $parent)
                                     <option value="{{ $parent->id }}"{{ $parent->id == old($name) ? ' selected' : '' }}>
                                         @for ($i = 0; $i < $parent->depth; $i++) &mdash; @endfor

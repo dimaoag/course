@@ -27,13 +27,24 @@ Breadcrumbs::register('admin.categories.index', function (Crumbs $crumbs) {
     $crumbs->push('Категории', route('admin.categories.index'));
 });
 
-Breadcrumbs::register('admin.categories.create', function (Crumbs $crumbs) {
+Breadcrumbs::register('admin.categories.list', function (Crumbs $crumbs, Category $category) {
     $crumbs->parent('admin.categories.index');
-    $crumbs->push('Создать', route('admin.categories.create'));
+    $crumbs->push($category->name_ru, route('admin.categories.list', $category));
 });
 
+
+Breadcrumbs::register('admin.categories.create', function (Crumbs $crumbs, Category $category) {
+    $crumbs->parent('admin.categories.list', $category);
+    $crumbs->push('Создать', route('admin.categories.create', $category));
+});
+
+
 Breadcrumbs::register('admin.categories.show', function (Crumbs $crumbs, Category $category) {
-    $crumbs->parent('admin.categories.index');
+    if ($category->getRoot()){
+        $crumbs->parent('admin.categories.list', $category->getRoot());
+    } else {
+        $crumbs->parent('admin.categories.index');
+    }
     $crumbs->push($category->name_ru, route('admin.categories.show', $category));
 });
 
