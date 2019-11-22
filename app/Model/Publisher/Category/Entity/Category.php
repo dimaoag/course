@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\Category\Entity;
+namespace App\Model\Publisher\Category\Entity;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
@@ -33,13 +33,9 @@ class Category extends Model
 {
     use NodeTrait;
 
-    const ONLINE = 1;
-    const OFFLINE = 2;
-    const MASTER = 3;
+    const IMAGE_PATH = 'publisher_categories';
 
-    const IMAGE_PATH = 'categories';
-
-    protected $table = 'course_categories';
+    protected $table = 'publisher_categories';
 
     public $timestamps = false;
 
@@ -47,22 +43,10 @@ class Category extends Model
 
 
 
-    public static function getOnlineCategory(): self
+    public static function getAll(): Collection
     {
-        return self::findOrFail(self::ONLINE);
+        return self::defaultOrder()->withDepth()->get();
     }
-
-    public static function getOfflineCategory(): self
-    {
-        return self::findOrFail(self::OFFLINE);
-    }
-
-    public static function getMasterCategory(): self
-    {
-        return self::findOrFail(self::MASTER);
-    }
-
-
 
     public function getAllChildren(): Collection
     {
@@ -107,23 +91,11 @@ class Category extends Model
     }
 
 
-    public static function getRootCategories(): Collection
-    {
-        return self::find([self::ONLINE, self::OFFLINE, self::MASTER]);
-    }
-
-
 
     public function getDepth(): int
     {
         $result = Category::withDepth()->find($this->id);
         return $depth = $result->depth;
-    }
-
-
-    public function isCanDeleted(): bool
-    {
-        return !$this->isRoot();
     }
 
 
@@ -134,5 +106,7 @@ class Category extends Model
         }
         return  null;
     }
+
+
 
 }

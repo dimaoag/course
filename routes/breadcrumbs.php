@@ -3,6 +3,7 @@
 use App\Model\Region\Entity\Region;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
 use App\Model\Category\Entity\Category;
+use App\Model\Publisher\Category\Entity\Category as PublisherCategory;
 
 
 // Home
@@ -76,6 +77,30 @@ Breadcrumbs::register('admin.regions.edit', function (Crumbs $crumbs, Region $re
     $crumbs->push('Изменить', route('admin.regions.edit', $region));
 });
 
+
+// Publisher Categories
+
+Breadcrumbs::register('admin.publisher.categories.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Категории школ', route('admin.publisher.categories.index'));
+});
+
+
+Breadcrumbs::register('admin.publisher.categories.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.publisher.categories.index');
+    $crumbs->push('Создать', route('admin.publisher.categories.create'));
+});
+
+
+Breadcrumbs::register('admin.publisher.categories.show', function (Crumbs $crumbs, PublisherCategory $category) {
+    $crumbs->parent('admin.publisher.categories.index');
+    $crumbs->push($category->name_ru, route('admin.publisher.categories.show', $category));
+});
+
+Breadcrumbs::register('admin.publisher.categories.edit', function (Crumbs $crumbs, PublisherCategory $category) {
+    $crumbs->parent('admin.publisher.categories.show', $category);
+    $crumbs->push('Изменить', route('admin.publisher.categories.edit', $category));
+});
 
 
 

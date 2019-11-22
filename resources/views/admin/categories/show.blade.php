@@ -38,8 +38,8 @@ $title = $category->name_ru;
                 <th>{{\App\Model\Category\Helper\AdminHelper::getFormLabel('image')}}</th>
                 <td>
                     @if($category->image)
-                        <a href="{{ Storage::disk('public')->url($category->image) }}" target="_blank">
-                            <img class="attachment-img" style="max-width: 150px" src="{{ Storage::disk('public')->url($category->image) }}" alt="image">
+                        <a href="{{ $category->getImageUrl() }}" target="_blank">
+                            <img class="attachment-img" style="max-width: 150px" src="{{ $category->getImageUrl() }}" alt="image">
                         </a>
                     @endif
                 </td>

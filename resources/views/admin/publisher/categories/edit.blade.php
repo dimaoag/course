@@ -1,7 +1,7 @@
 <?php
 
-/** @var \App\Model\Category\Entity\Category $category */
-/** @var \App\Model\Category\Entity\Category[] $parents */
+/** @var \App\Model\Publisher\Category\Entity\Category $category */
+/** @var \App\Model\Publisher\Category\Entity\Category[] $parents */
 $title = 'Изменить ' . $category->name_ru;
 ?>
 
@@ -16,17 +16,16 @@ $title = 'Изменить ' . $category->name_ru;
         <div class="col-md-12">
             <div class="card card-primary">
 
-                <form method="POST" action="{{ route('admin.categories.update', $category) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.publisher.categories.update', $category) }}" enctype="multipart/form-data">
                     <div class="card-body">
                         @csrf
                         @method('PUT')
 
-
-                        @if(!$category->isRoot())
                         <?php $name = 'parent' ?>
                         <div class="form-group">
-                            <label for="{{$name}}" class="col-form-label">{{\App\Model\Category\Helper\AdminHelper::getFormLabel($name)}}</label>
+                            <label for="{{$name}}" class="col-form-label">{{\App\Model\Publisher\Category\Helper\AdminHelper::getFormLabel($name)}}</label>
                             <select id="{{$name}}" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}">
+                                <option value=""></option>
                                 @foreach ($parents as $parent)
                                     <option value="{{ $parent->id }}"{{ $parent->id == old($name, $category->parent_id) ? ' selected' : '' }}>
                                         @for ($i = 0; $i < $parent->depth; $i++) &mdash; @endfor
@@ -38,11 +37,10 @@ $title = 'Изменить ' . $category->name_ru;
                                 <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>
                             @endif
                         </div>
-                        @endif
 
                         <?php $name = 'name_ru' ?>
                         <div class="form-group">
-                            <label for="{{$name}}" class="col-form-label">{{\App\Model\Category\Helper\AdminHelper::getFormLabel($name)}}</label>
+                            <label for="{{$name}}" class="col-form-label">{{\App\Model\Publisher\Category\Helper\AdminHelper::getFormLabel($name)}}</label>
                             <input id="{{$name}}" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" value="{{ old($name, $category->name_ru) }}" required>
                             @if ($errors->has($name))
                                 <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>
@@ -52,7 +50,7 @@ $title = 'Изменить ' . $category->name_ru;
 
                         <?php $name = 'name_uk' ?>
                         <div class="form-group">
-                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
+                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Publisher\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
                             <input id="{{$name}}" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" value="{{ old($name, $category->name_uk) }}" required>
                             @if ($errors->has($name))
                                 <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>
@@ -62,7 +60,7 @@ $title = 'Изменить ' . $category->name_ru;
 
                         <?php $name = 'description_ru' ?>
                         <div class="form-group">
-                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
+                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Publisher\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
                             <textarea id="{{$name}}" class="summernote form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" rows="5">{{ old($name, $category->description_ru) }}</textarea>
                             @if ($errors->has($name))
                                 <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>
@@ -71,7 +69,7 @@ $title = 'Изменить ' . $category->name_ru;
 
                         <?php $name = 'description_uk' ?>
                         <div class="form-group">
-                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
+                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Publisher\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
                             <textarea id="{{$name}}" class="summernote form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" rows="5">{{ old($name, $category->description_uk) }}</textarea>
                             @if ($errors->has($name))
                                 <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>
@@ -87,7 +85,7 @@ $title = 'Изменить ' . $category->name_ru;
                                     </a>
                                     <div class="mailbox-attachment-info">
                             <span class="mailbox-attachment-size clearfix mt-1">
-                                <a href="{{route('admin.categories.delete-photo', $category)}}" class="btn btn-sm btn-danger float-right"><i class="fas fa-trash"></i></a>
+                                <a href="{{route('admin.publisher.categories.delete-photo', $category)}}" class="btn btn-sm btn-danger float-right"><i class="fas fa-trash"></i></a>
                             </span>
                                     </div>
                                 </li>
@@ -95,7 +93,7 @@ $title = 'Изменить ' . $category->name_ru;
                         @else
                             <?php $name = 'image' ?>
                             <div class="form-group">
-                                <label for="{{$name}}" class="col-form-label">{{ \App\Model\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
+                                <label for="{{$name}}" class="col-form-label">{{ \App\Model\Publisher\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
                                 <input id="{{$name}}" type="file" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}">
                             </div>
                         @endif
@@ -103,7 +101,7 @@ $title = 'Изменить ' . $category->name_ru;
 
                         <?php $name = 'meta_title_ru' ?>
                         <div class="form-group">
-                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
+                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Publisher\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
                             <input id="{{$name}}" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" value="{{ old($name, $category->meta_title_ru) }}">
                             @if ($errors->has($name))
                                 <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>
@@ -113,7 +111,7 @@ $title = 'Изменить ' . $category->name_ru;
 
                         <?php $name = 'meta_title_uk' ?>
                         <div class="form-group">
-                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
+                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Publisher\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
                             <input id="{{$name}}" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" value="{{ old($name, $category->meta_title_uk) }}">
                             @if ($errors->has($name))
                                 <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>
@@ -123,7 +121,7 @@ $title = 'Изменить ' . $category->name_ru;
 
                         <?php $name = 'meta_description_ru' ?>
                         <div class="form-group">
-                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
+                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Publisher\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
                             <textarea id="{{$name}}" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" rows="2">{{ old($name, $category->meta_description_ru) }}</textarea>
                             @if ($errors->has($name))
                                 <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>
@@ -132,7 +130,7 @@ $title = 'Изменить ' . $category->name_ru;
 
                         <?php $name = 'meta_description_uk' ?>
                         <div class="form-group">
-                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
+                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Publisher\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
                             <textarea id="{{$name}}" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" rows="2">{{ old($name, $category->meta_description_uk) }}</textarea>
                             @if ($errors->has($name))
                                 <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>
@@ -141,7 +139,7 @@ $title = 'Изменить ' . $category->name_ru;
 
                         <?php $name = 'meta_keywords_ru' ?>
                         <div class="form-group">
-                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
+                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Publisher\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
                             <input id="{{$name}}" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" value="{{ old($name, $category->meta_keywords_ru) }}">
                             @if ($errors->has($name))
                                 <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>
@@ -150,7 +148,7 @@ $title = 'Изменить ' . $category->name_ru;
 
                         <?php $name = 'meta_keywords_uk' ?>
                         <div class="form-group">
-                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
+                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\Publisher\Category\Helper\AdminHelper::getFormLabel($name) }}</label>
                             <input id="{{$name}}" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" value="{{ old($name, $category->meta_keywords_uk) }}">
                             @if ($errors->has($name))
                                 <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>

@@ -27,9 +27,17 @@ class AdminMenuServiceProvider extends ServiceProvider
 
             $event->menu->add([
                 'text' => 'Города',
-                'url'  => 'admin/regions',
+                'url'  => route('admin.regions.index'),
                 'icon' => 'fas fa-map-marker-alt',
                 'active' => ['/admin/regions', '/admin/regions/*'],
+            ]);
+
+            $event->menu->add('Школы');
+            $event->menu->add([
+                'text' => 'Категории',
+                'url'  => route('admin.publisher.categories.index'),
+                'icon' => 'fas fa-poll',
+                'active' => ['/admin/publisher/categories', '/admin/publisher/categories/*'],
             ]);
 
         });
