@@ -42,27 +42,20 @@ class AuthServiceProvider extends ServiceProvider
             return $user->isAdmin() || $user->isModerator();
         });
 
-        Gate::define('manage-pages', function (User $user) {
-            return $user->isAdmin();
-        });
 
         Gate::define('manage-users', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
 
-        Gate::define('manage-tickets', function (User $user) {
-            return $user->isAdmin() || $user->isModerator();
-        });
-
         Gate::define('manage-regions', function (User $user) {
-            return $user->isAdmin();
-        });
-
-        Gate::define('manage-adverts', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
 
-        Gate::define('manage-adverts-categories', function (User $user) {
+        Gate::define('manage-categories', function (User $user) {
+            return $user->isAdmin() || $user->isModerator();
+        });
+
+        Gate::define('manage-publisher-categories', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
 
@@ -78,12 +71,5 @@ class AuthServiceProvider extends ServiceProvider
             return $advert->user_id === $user->id;
         });
 
-        Gate::define('manage-own-banner', function (User $user, Banner $banner) {
-            return $banner->user_id === $user->id;
-        });
-
-        Gate::define('manage-own-ticket', function (User $user, Ticket $ticket) {
-            return $ticket->user_id === $user->id;
-        });
     }
 }

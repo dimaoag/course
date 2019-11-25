@@ -17,6 +17,14 @@ class AdminMenuServiceProvider extends ServiceProvider
     public function boot(Dispatcher $events)
     {
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
+            $event->menu->add('Пользователи');
+            $event->menu->add([
+                'text' => 'Пользователи',
+                'icon' => 'fas fa-fw fa-users',
+                'url'  => route('admin.users.index'),
+                'active' => ['/admin/users', '/admin/users*',],
+            ]);
+
             $event->menu->add('Курсы');
             $event->menu->add([
                 'text' => 'Категории',
@@ -29,7 +37,7 @@ class AdminMenuServiceProvider extends ServiceProvider
                 'text' => 'Города',
                 'url'  => route('admin.regions.index'),
                 'icon' => 'fas fa-map-marker-alt',
-                'active' => ['/admin/regions', '/admin/regions/*'],
+                'active' => ['/admin/regions', '/admin/regions*'],
             ]);
 
             $event->menu->add('Школы');

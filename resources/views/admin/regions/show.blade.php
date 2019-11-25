@@ -15,7 +15,7 @@ $title = $region->name_ru;
         <form method="POST" action="{{ route('admin.regions.destroy', $region) }}" class="mr-1">
             @csrf
             @method('DELETE')
-            <button class="btn btn-danger">Удалить</button>
+            <button class="btn btn-danger btn-confirm" data-message="Вы подтверждаете действие?">Удалить</button>
         </form>
     </div>
 

@@ -90,7 +90,7 @@ class User extends Authenticatable
         ])->exists();
 
         if ($exists){
-            throw new \DomainException('Alrady added network');
+            throw new \DomainException('Already added network');
         }
 
         $this->networks()->create([
@@ -137,9 +137,17 @@ class User extends Authenticatable
     public static function rolesList(): array
     {
         return [
-            self::ROLE_USER => 'Пользователь',
-            self::ROLE_MODERATOR => 'Модератор',
-            self::ROLE_ADMIN => 'Администратор',
+            self::ROLE_USER => 'User',
+            self::ROLE_MODERATOR => 'Moderator',
+            self::ROLE_ADMIN => 'Admin',
+        ];
+    }
+
+    public static function statusesList(): array
+    {
+        return [
+            self::STATUS_ACTIVE => 'Активный',
+            self::STATUS_WAIT => 'Не активный',
         ];
     }
 

@@ -1,8 +1,12 @@
+<?php
+$title = 'Админка главная'
+?>
+
 @extends('layouts.admin')
 
-@section('title', 'Admin home page')
+@section('title', $title)
 
-@section('content')
+@section('admin-content')
     <div class="row">
         <div class="col-md-12">
             <div class="card">

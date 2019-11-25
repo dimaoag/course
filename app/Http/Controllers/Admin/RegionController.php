@@ -11,10 +11,10 @@ use Illuminate\Support\Str;
 class RegionController extends Controller
 {
 
-//    public function __construct()
-//    {
-//        $this->middleware('can:manage-adverts-categories');
-//    }
+    public function __construct()
+    {
+        $this->middleware('can:manage-regions');
+    }
 
     public function index(Request $request)
     {

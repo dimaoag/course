@@ -1,6 +1,7 @@
 <?php
 
 use App\Model\Region\Entity\Region;
+use App\Model\User\Entity\User;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
 use App\Model\Category\Entity\Category;
 use App\Model\Publisher\Category\Entity\Category as PublisherCategory;
@@ -19,6 +20,30 @@ use App\Model\Publisher\Category\Entity\Category as PublisherCategory;
 Breadcrumbs::register('admin.home', function (Crumbs $crumbs) {
     $crumbs->push('Главная', route('admin.home'));
 });
+
+
+// Users
+
+Breadcrumbs::register('admin.users.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push('Пользователи', route('admin.users.index'));
+});
+
+Breadcrumbs::register('admin.users.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.users.index');
+    $crumbs->push('Создать', route('admin.users.create'));
+});
+
+Breadcrumbs::register('admin.users.show', function (Crumbs $crumbs, User $user) {
+    $crumbs->parent('admin.users.index');
+    $crumbs->push($user->name, route('admin.users.show', $user));
+});
+
+Breadcrumbs::register('admin.users.edit', function (Crumbs $crumbs, User $user) {
+    $crumbs->parent('admin.users.show', $user);
+    $crumbs->push('Изменить', route('admin.users.edit', $user));
+});
+
 
 
 // Categories
