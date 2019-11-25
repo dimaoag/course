@@ -35,6 +35,7 @@ Route::group(
             Route::post('/down', 'CategoryController@down')->name('down');
             Route::post('/last', 'CategoryController@last')->name('last');
             Route::get('/delete-photo', 'CategoryController@deletePhoto')->name('delete-photo');
+            Route::resource('attributes', 'AttributeController')->except('index');
         });
 
         Route::resource('regions', 'RegionController');

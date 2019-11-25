@@ -11,7 +11,7 @@ class AdminHelper
     {
         $labels = [
             'name_ru' => 'Название на русском',
-            'name_uk' => 'Название на уркаинском',
+            'name_uk' => 'Название на украинском',
             'slug' => 'Алиас',
             'parent' => 'Родительская категория',
             'image' => 'Изображение',
@@ -23,6 +23,24 @@ class AdminHelper
             'meta_description_uk' => 'SEO описание на уркаинском',
             'meta_keywords_ru' => 'SEO ключевые слова на русском',
             'meta_keywords_uk' => 'SEO ключевые слова на уркаинском',
+        ];
+
+        if (!in_array($attribute, array_keys($labels))){
+            throw new \DomainException('Неверный атрибут');
+        }
+
+        return $labels[$attribute];
+    }
+
+    public static function getAttributeLabel(string $attribute): string
+    {
+        $labels = [
+            'name_ru' => 'Название на русском',
+            'name_uk' => 'Название на украинском',
+            'type' => 'Тип данных',
+            'required' => 'Обязательный атрибут',
+            'variants' => 'Варианты',
+            'sort' => 'Сортировка',
         ];
 
         if (!in_array($attribute, array_keys($labels))){

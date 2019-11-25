@@ -28,6 +28,8 @@ use Kalnoy\Nestedset\NodeTrait;
  * @property int $depth
  * @property Category $parent
  * @property Category[] $children
+ * @property Attribute[] $attributes
+ *
  */
 class Category extends Model
 {
@@ -60,6 +62,27 @@ class Category extends Model
     public static function getMasterCategory(): self
     {
         return self::findOrFail(self::MASTER);
+    }
+
+
+    // Attributes
+
+    public function parentAttributes(): array
+    {
+        return $this->parent ? $this->parent->allAttributes() : [];
+    }
+
+    /**
+     * @return Attribute[]
+     */
+    public function allAttributes(): array
+    {
+        return array_merge($this->parentAttributes(), $this->attributes()->orderBy('sort')->getModels());
+    }
+
+    public function attributes()
+    {
+        return $this->hasMany(Attribute::class, 'category_id', 'id');
     }
 
 
