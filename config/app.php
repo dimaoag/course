@@ -82,6 +82,12 @@ return [
 
     'locale' => 'ru',
 
+    'available_locales' => [
+        'en',
+        'ru',
+        'uk'
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale

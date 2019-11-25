@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AdminController;
 use App\Http\Requests\Admin\Category\AttributesFormRequest;
 use App\Model\Category\Entity\Attribute;
 use App\Model\Category\Entity\Category;
 
 
-class AttributeController extends Controller
+class AttributeController extends AdminController
 {
     public function __construct()
     {

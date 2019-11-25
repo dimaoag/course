@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AdminController;
 use App\Http\Requests\Admin\Category\RegionFormRequest;
 use App\Model\Region\Entity\Region;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class RegionController extends Controller
+class RegionController extends AdminController
 {
 
     public function __construct()

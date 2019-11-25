@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\AdminController;
 use App\Http\Requests\Admin\Category\CategoryFormCreateRequest;
 use App\Http\Requests\Admin\Category\CategoryFormEditRequest;
 use App\Model\Category\Entity\Category;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
-class CategoryController extends Controller
+class CategoryController extends AdminController
 {
     public function __construct()
     {

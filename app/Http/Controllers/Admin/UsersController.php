@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\AdminController;
 use App\Model\User\Entity\User;
 use App\Http\Requests\Admin\Users\CreateRequest;
 use App\Http\Requests\Admin\Users\UpdateRequest;
 use App\UseCases\Auth\RegisterService;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class UsersController extends Controller
+class UsersController extends AdminController
 {
 
     private $register;
