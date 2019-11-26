@@ -3,7 +3,7 @@
 
 @section('content_top_nav_right')
     <li class="nav-item">
-        <a class="nav-link" href="{{route('home')}}">
+        <a class="nav-link" href="{{route('home', app()->getLocale())}}">
             <i class="fas fa-arrow-circle-right"></i>
             <span>Вернутся на сайт</span>
         </a>

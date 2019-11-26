@@ -11,7 +11,10 @@ class ResetPasswordController extends Controller
     use ResetsPasswords;
 
 
-    protected $redirectTo = '/home';
+    public function redirectTo()
+    {
+        return app()->getLocale() . '/';
+    }
 
 
     protected function rules()

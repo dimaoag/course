@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Publisher;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AdminController;
 use App\Http\Requests\Admin\Publisher\Category\CategoryFormRequest;
 use App\Model\Publisher\Category\Entity\Category;
 use Illuminate\Http\Request;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
-class CategoryController extends Controller
+class CategoryController extends AdminController
 {
     public function __construct()
     {

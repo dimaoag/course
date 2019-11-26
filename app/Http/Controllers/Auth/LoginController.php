@@ -10,7 +10,10 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    protected $redirectTo = '/home';
+    public function redirectTo()
+    {
+        return app()->getLocale() . '/';
+    }
 
     public function __construct()
     {

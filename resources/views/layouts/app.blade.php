@@ -31,8 +31,14 @@ use App\Http\Middleware\LocaleMiddleware;
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+
                     <ul class="navbar-nav mr-auto">
+                        <li>
+                            <a class="{{ app()->getLocale() === 'ru' ? 'active' : '' }}" href="{{ route(\Illuminate\Support\Facades\Route::currentRouteName(), 'ru') }}">RU</a>
+                        </li>
+                        <li>
+                            <a class="{{ app()->getLocale() === 'uk' ? 'active' : '' }}" href="{{ route(\Illuminate\Support\Facades\Route::currentRouteName(), 'uk') }}">UA</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
