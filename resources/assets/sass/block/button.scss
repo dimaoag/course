@@ -1,0 +1,89 @@
+.button {
+  display: inline-block;
+  padding: 14px 61px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: $violet-dark-color;
+  text-decoration: none;
+  background-color: $violet-lite-color;
+  border: 1px solid $violet-lite-color;
+  border-radius: 3px;
+
+  &:focus {
+    outline: none;
+    color: rgba($violet-dark-color, 1);
+    box-shadow: 0 0 0 0.2rem rgba(#7835bb, 0.25);
+  }
+}
+
+.button--mobile-menu {
+  width: 100%;
+}
+
+.button--registration {
+  width: 100%;
+}
+
+.button--organization-header {
+  display: none;
+}
+
+.button--enter {
+  width: 100%;
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+.button--recovery-password {
+  padding-left: 20px;
+  padding-right: 23px;
+}
+
+.button--recovery-next-step {
+  padding-left: 19px;
+  padding-right: 19px;
+}
+
+.button--green {
+  color: $green-color;
+  background-color: $green-color-lite;
+  border-color: $green-color-lite;
+
+  &:focus {
+    color: $green-color;
+    box-shadow: 0 0 0 0.2rem rgba($green-color, 0.25);
+  }
+}
+
+@media (min-width: $tablet-large) {
+  .button--organization-header {
+    display: inline-block;
+    padding: 12px 19px;
+  }
+}
+
+@media (min-width: $laptop) {
+  .button {
+    &:hover {
+      color: rgba($violet-dark-color, 0.6);
+    }
+
+    &:focus {
+      outline: none;
+      color: rgba($violet-dark-color, 1);
+      box-shadow: 0 0 0 0.2rem rgba(#7835bb, 0.25);
+    }
+  }
+
+  .button--green {
+    &:hover {
+      color: rgba($green-color, 0.6);
+    }
+
+    &:focus {
+      color: rgba($green-color, 1);
+      box-shadow: 0 0 0 0.2rem rgba($green-color, 0.25);
+    }
+  }
+}

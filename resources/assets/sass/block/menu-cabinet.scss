@@ -1,0 +1,39 @@
+.menu-cabinet {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.menu-cabinet__link {
+  position: relative;
+  display: inline-block;
+  padding: 12px 38px 12px 79px;
+  color: $black-color;
+  font-size: 16px;
+  background-color: $gray-standard-color;
+  border-radius: 21px;
+  text-decoration: none;
+}
+
+.menu-cabinet__link svg {
+  position: absolute;
+  left: 20px;
+  top: 11px;
+}
+
+@media (max-width: 1210px) {
+  .menu-cabinet {
+    display: flex;
+    overflow: hidden;
+    margin: 0 -20px;
+  }
+}
+
+@media (min-width: $laptop) {
+  .menu-cabinet {
+    max-width: 260px;
+    padding-right: 30px;
+    width: 100%;
+    border-right: 1px solid $gray-color;
+  }
+}

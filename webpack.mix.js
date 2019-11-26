@@ -23,8 +23,11 @@ mix
     .setPublicPath('public/build')
     .setResourceRoot('/build/')
     .js('resources/assets/js/app.js', 'js')
-    .sass('resources/assets/sass/app.scss', 'css')
-    .version();
+    .sass('resources/assets/sass/style.scss', 'css')
+    .version()
+    .options({
+        processCssUrls: false
+    });
 
 
 mix.webpackConfig({
