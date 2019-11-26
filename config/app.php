@@ -182,6 +182,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\AdminMenuServiceProvider::class,
+        App\Providers\ComposerServiceProvider::class,
 
     ],
 

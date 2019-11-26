@@ -1,6 +1,6 @@
 <?php
 
-use App\Model\Category\Entity\Category;
+/** @var array $rootsCategories; */
 
 ?>
 <!doctype html>
@@ -61,19 +61,19 @@ use App\Model\Category\Entity\Category;
                     <li class="mobile-menu__item">
                         <a href="#" class="mobile-menu__link">
                             <svg width="21" height="21"><use xlink:href="#icon-mobile-curse"></use></svg>
-                            {{ Category::getOfflineCategory()->getName()}}
+                            {{ $rootsCategories[\App\Model\Category\Entity\Category::OFFLINE]->getName()}}
                         </a>
                     </li>
                     <li class="mobile-menu__item">
                         <a href="#" class="mobile-menu__link">
                             <svg width="21" height="21"><use xlink:href="#icon-mobile-curse-online"></use></svg>
-                            {{ Category::getOnlineCategory()->getName() }}
+                            {{ $rootsCategories[\App\Model\Category\Entity\Category::ONLINE]->getName()}}
                         </a>
                     </li>
                     <li class="mobile-menu__item">
                         <a href="#" class="mobile-menu__link">
                             <svg width="20" height="21"><use xlink:href="#icon-mobile-master-class"></use></svg>
-                            {{ Category::getMasterCategory()->getName() }}
+                            {{ $rootsCategories[\App\Model\Category\Entity\Category::MASTER]->getName()}}
                         </a>
                     </li>
                     <li class="mobile-menu__item">
@@ -172,17 +172,17 @@ use App\Model\Category\Entity\Category;
                     <ul class="menu">
                         <li class="menu__list menu__list--active">
                             <a href="#" class="menu__link">
-                                {{ Category::getOfflineCategory()->getName()}}
+                                {{ $rootsCategories[\App\Model\Category\Entity\Category::OFFLINE]->getName()}}
                             </a>
                         </li>
                         <li class="menu__list">
                             <a href="#" class="menu__link">
-                                {{ Category::getOnlineCategory()->getName()}}
+                                {{ $rootsCategories[\App\Model\Category\Entity\Category::ONLINE]->getName()}}
                             </a>
                         </li>
                         <li class="menu__list">
                             <a href="#" class="menu__link">
-                                {{ Category::getMasterCategory()->getName()}}
+                                {{ $rootsCategories[\App\Model\Category\Entity\Category::MASTER]->getName()}}
                             </a>
                         </li>
                         <li class="menu__list">
@@ -245,9 +245,9 @@ use App\Model\Category\Entity\Category;
                         </button>
                     </div>
                     <ul class="site-footer__menu site-footer__menu--no-js">
-                        <li><a href="#">{{ Category::getOfflineCategory()->getName() }}</a></li>
-                        <li><a href="#">{{ Category::getOnlineCategory()->getName() }}</a></li>
-                        <li><a href="#">{{ Category::getMasterCategory()->getName() }}</a></li>
+                        <li><a href="#">{{ $rootsCategories[\App\Model\Category\Entity\Category::OFFLINE]->getName()}}</a></li>
+                        <li><a href="#">{{ $rootsCategories[\App\Model\Category\Entity\Category::ONLINE]->getName()}}</a></li>
+                        <li><a href="#">{{ $rootsCategories[\App\Model\Category\Entity\Category::MASTER]->getName()}}</a></li>
                         <li><a href="#">{{ __('layout/footer.Publishers') }}</a></li>
                         <li><a href="#">{{ __('layout/footer.Articles') }}</a></li>
                     </ul>
