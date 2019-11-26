@@ -65,6 +65,7 @@ class Category extends Model
     }
 
 
+
     // Attributes
 
     public function parentAttributes(): array
@@ -158,4 +159,17 @@ class Category extends Model
         return  null;
     }
 
+
+    public function getName(): string
+    {
+        $name = 'name_' . app()->getLocale();
+        return  $this->$name;
+    }
+
+
+    public function getDescription(): string
+    {
+        $description = 'description_' . app()->getLocale();
+        return  $this->$description;
+    }
 }

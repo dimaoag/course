@@ -1,0 +1,14 @@
+<?php
+return [
+    'Improve Ideas' => 'Ідеї ​​щодо покращення сайту',
+    'Log In' => 'Увійти',
+    'Sign Up' => 'Зареєструватися',
+    'My cabinet' => 'Мій кабінет',
+    'Home' => 'Головна',
+    'Search input placeholder' => 'Я шукаю...',
+    'Create organization' => 'Розмістити організацію',
+    'Publishers' => 'Школи',
+    'Favorites' => 'Вибране',
+    'Adverts of courses' => 'Оголошень про курси',
+    'Search label' => 'Пошук'
+];
