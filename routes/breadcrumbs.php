@@ -34,12 +34,12 @@ Breadcrumbs::register('register-organization', function (Crumbs $crumbs) {
 
 Breadcrumbs::register('password.request', function (Crumbs $crumbs) {
     $crumbs->parent('login');
-    $crumbs->push('Reset Password', route('password.request'));
+    $crumbs->push(trans('auth/password/request.Title'), route('password.request', app()->getLocale()));
 });
 
 Breadcrumbs::register('password.reset', function (Crumbs $crumbs) {
     $crumbs->parent('password.request');
-    $crumbs->push('Change', route('password.reset'));
+    $crumbs->push(trans('auth/password/reset.Title'), route('password.reset', app()->getLocale()));
 });
 
 

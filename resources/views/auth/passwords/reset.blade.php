@@ -1,65 +1,107 @@
+<?php
+
+$title = trans('auth/password/reset.Title');
+$description = '';
+$keywords = '';
+
+?>
+
 @extends('layouts.app')
 
+@section('title', $title)
+@section('description', $description)
+@section('keywords', $keywords)
+
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
-                        @csrf
+    {{ Breadcrumbs::view('layouts.partials.breadcrumbs') }}
 
-                        <input type="hidden" name="token" value="{{ $token }}">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Reset Password') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <section class="page-name">
+        <div class="container page-name__inner">
+            <h2 class="h2">{{$title}}</h2>
         </div>
-    </div>
-</div>
+    </section>
+    <section class="recovery-password recovery-password--next-step">
+        <div class="container recovery-password__inner">
+            <h2 class="visually-hidden">{{$title}}</h2>
+            <form method="POST" action="{{ route('password.update') }}">
+                @csrf
+                <input type="hidden" name="token" value="{{ $token }}">
+                <div class="form form--recovery-password form--recovery-password--next-step">
+                    <p class="form__control">
+                        <label for="recovery_password_enter_email" class="label">
+                            {{ __('auth/password/reset.Email') }}
+                        </label>
+                        <input type="email" name="email"
+                               class="input input--registration @error('email') is-invalid @enderror"
+                               id="recovery_password_enter_email"
+                               value="{{ $email ?? old('email') }}" required readonly
+                        >
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </p>
+                    <p class="form__control">
+                        <?php $name = 'password' ?>
+                        <label for="registration_user_password" class="label">
+                            {{ __('auth/password/reset.Password') }}
+                        </label>
+                        <input type="password" name="{{$name}}"
+                               class="input input--registration @error($name)is-invalid @enderror"
+                               id="registration_user_password"
+                               required autofocus
+                        >
+                        @error($name)
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </p>
+                    <p class="form__control">
+                        <?php $name = 'password_confirmation' ?>
+                        <label for="registration_user_password_repeat" class="label">
+                            {{ __('auth/password/reset.New password') }}
+                        </label>
+                        <input type="password" name="{{$name}}"
+                               class="input input--registration @error($name)is-invalid @enderror"
+                               id="registration_user_password_repeat"
+                               required
+                        >
+                        @error($name)
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </p>
+                    <div class="form__control form__control--description">
+                        <div class="form__description">
+                            <p>
+                                {{ __('auth/password/reset.Password must be') }}
+                            </p>
+                            <ul class="form__content-list form__content-list--circle">
+                                <li>
+                                    {{ __('auth/password/reset.Min length') }}
+                                </li>
+                                <li>
+                                    {{ __('auth/password/reset.Without') }}
+                                    <br>
+                                    (!, ?, \, /, и т. п.)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="form__control form__control--submit">
+                        <button type="submit" class="button button--recovery-next-step">
+                            {{ __('auth/password/reset.Save new password') }}
+                        </button>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </section>
+
 @endsection

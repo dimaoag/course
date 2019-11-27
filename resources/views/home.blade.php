@@ -22,12 +22,6 @@ $keywords = '';
                 <div class="card-header">{{ __('home/index.Title') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
                     Home page
                 </div>
             </div>

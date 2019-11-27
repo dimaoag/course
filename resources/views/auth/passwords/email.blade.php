@@ -1,47 +1,64 @@
+<?php
+
+$title = trans('auth/password/request.Title');
+$description = '';
+$keywords = '';
+
+?>
+
 @extends('layouts.app')
 
+@section('title', $title)
+@section('description', $description)
+@section('keywords', $keywords)
+
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    {{ Breadcrumbs::view('layouts.partials.breadcrumbs') }}
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <section class="page-name">
+        <div class="container page-name__inner">
+            <h2 class="h2">{{$title}}</h2>
         </div>
-    </div>
-</div>
+    </section>
+
+    <section class="recovery-password">
+        <div class="container recovery-password__inner">
+            <h2 class="visually-hidden">{{ __('auth/password/request.Form title') }}</h2>
+            <form method="POST" action="{{ route('password.email') }}">
+                @csrf
+                <div class="form form--recovery-password">
+                    <p class="form__control">
+                        <label for="recovery_password_enter_email" class="label">
+                            {{ __('auth/password/request.Email') }}
+                        </label>
+                        <input type="email" name="email"
+                               class="input input--registration @error('email') is-invalid @enderror"
+                               id="recovery_password_enter_email"
+                               value="{{ old('email') }}" required autocomplete="email" autofocus
+                        >
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </p>
+                    <div class="form__control form__control--description">
+                        <div class="form__description">
+                            <p>
+                                {!! __('auth/password/request.Right text') !!}
+                            </p>
+                        </div>
+                    </div>
+                    <p class="form__control form__control--submit">
+                        <button type="submit" class="button button--recovery-password">
+                            {{ __('auth/password/request.Send') }}
+                        </button>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </section>
+
 @endsection
