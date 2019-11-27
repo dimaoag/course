@@ -1,6 +1,6 @@
 <?php
 
-$title = trans('auth/login.title');
+$title = trans('auth/login.Title');
 $description = '';
 $keywords = '';
 
@@ -17,7 +17,6 @@ $keywords = '';
 @section('content')
 
     {{ Breadcrumbs::view('layouts.partials.breadcrumbs') }}
-
 
     <section class="page-name">
         <div class="container page-name__inner">

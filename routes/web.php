@@ -16,11 +16,12 @@ Route::group([
 
     Auth::routes();
     Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-    Route::get('/verify/{token}', 'Auth\RegisterController@verify')->name('verify');
+
 
 });
 
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/verify/{token}', 'Auth\RegisterController@verify')->name('verify');
 
 
 

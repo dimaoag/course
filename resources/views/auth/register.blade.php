@@ -1,77 +1,154 @@
+<?php
+
+$title = trans('auth/register.Title');
+$description = '';
+$keywords = '';
+
+?>
+
 @extends('layouts.app')
 
+@section('title', $title)
+@section('description', $description)
+@section('keywords', $keywords)
+
+
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+    {{ Breadcrumbs::view('layouts.partials.breadcrumbs') }}
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
+<section class="registration registration--user">
+        <div class="registration__mobile-navigation">
+            <div class="container registration__inner">
+                <ul class="registration__menu">
+                    <li class="registration__item">
+                        <a href="#">{{ __('auth/register.Menu item user') }}</a>
+                    </li>
+                    <li class="registration__item registration__item--active">
+                        <a>{{ __('auth/register.Menu item organization') }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="registration__background registration__background--desktop">
+            <div class="registration__content">
+                <div class="registration__background registration__background--mobile">
+                    <article class="registration__info-block">
+                        <div class="container">
+                            <div class="registration__text">
+                                <h2>
+                                    {!! __('auth/register.Join now to') !!}  GetSkill
+                                </h2>
+                                <ul>
+                                    <li>
+                                        {{ __('auth/register.Background phrase one') }}
+                                    </li>
+                                    <li>
+                                        {{ __('auth/register.Background phrase two') }}
+                                    </li>
+                                    <li>
+                                        {{ __('auth/register.Background phrase three') }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="registration__form">
+                    <div class="container">
+                        <form method="POST" action="{{ route('register', app()->getLocale()) }}" id="registration_user">
+                            @csrf
+                            <div class="form form--registration">
+                                <p class="form__control">
+                                    <?php $name = 'name' ?>
+                                    <label for="registration_user_name" class="label">
+                                        {{ __('auth/register.First Name') }}
+                                    </label>
+                                    <input type="text" name="{{$name}}"
+                                           class="input input--registration @error($name)is-invalid @enderror"
+                                           id="registration_user_name"
+                                           required autocomplete="{{$name}}" autofocus
+                                           value="{{ old($name) }}"
+                                    >
+                                    @error($name)
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
+                                    @enderror
+                                </p>
+                                <p class="form__control">
+                                    <?php $name = 'email' ?>
+                                    <label for="registration_user_email" class="label">
+                                        {{ __('auth/register.Email') }}
+                                    </label>
+                                    <input type="email" name="{{$name}}" class="input input--registration @error($name)is-invalid @enderror"
+                                           id="registration_user_email"
+                                           required autocomplete="{{$name}}"
+                                           value="{{ old($name) }}"
+                                    >
+                                    @error($name)
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
+                                    @enderror
+                                </p>
+                                <p class="form__control">
+                                    <?php $name = 'password' ?>
+                                    <label for="registration_user_password" class="label">
+                                        {{ __('auth/register.Password') }}
+                                    </label>
+                                    <input type="password" name="{{$name}}"
+                                           class="input input--registration @error($name)is-invalid @enderror"
+                                           id="registration_user_password"
+                                           required
+                                    >
+                                    @error($name)
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                    @enderror
+                                </p>
+                                <p class="form__control">
+                                    <?php $name = 'password_confirmation' ?>
+                                    <label for="registration_user_password_repeat" class="label">
+                                        {{ __('auth/register.Password confirm') }}
+                                    </label>
+                                    <input type="password" name="{{$name}}"
+                                           class="input input--registration @error($name)is-invalid @enderror"
+                                           id="registration_user_password_repeat"
+                                           required
+                                    >
+                                    @error($name)
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </p>
+                                <p class="form__control checkbox">
+                                    <input type="checkbox" name="policy"
+                                           id="registration_privacy_policy"
+                                           class="visually-hidden checkbox__input"
+                                    >
+                                    <label for="registration_privacy_policy" class="checkbox__label">
+                                        {{ __('auth/register.With') }}
+                                        <a href="#" class="link">
+                                            {{ __('auth/register.Privacy policy') }}
+                                        </a>
+                                        {{ __('auth/register.Acquainted') }}
+                                    </label>
+                                </p>
+                                <p class="form__control form__control--submit">
+                                    <button type="submit" class="button button--registration">
+                                        {{ __('auth/register.Sign Up') }}
+                                    </button>
+                                </p>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
+
 @endsection

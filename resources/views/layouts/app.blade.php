@@ -124,17 +124,29 @@
                                 {{ __('layout/header.Improve Ideas') }}
                             </a>
                         </li>
-                        <li class="user-features__item">
-                            <a href="{{ route('login', app()->getLocale()) }}" class="user-features__link">
-                                {{ __('layout/header.Log In') }}
-                            </a>
-                        </li>
-                        <li class="user-features__item user-features__item--registration">
-                            <a href="#" class="user-features__link">
-                                {{ __('layout/header.Sign Up') }}
-                                <svg width="13" height="7" class="user-features__drop-icon"><use xlink:href="#icon-arrow"></use></svg>
-                            </a>
-                        </li>
+
+                        @guest
+                            <li class="user-features__item">
+                                <a href="{{ route('login', app()->getLocale()) }}" class="user-features__link">
+                                    {{ __('layout/header.Log In') }}
+                                </a>
+                            </li>
+                            <li class="user-features__item user-features__item--registration">
+                                <a href="#" class="user-features__link">
+                                    {{ __('layout/header.Sign Up') }}
+                                    <svg width="13" height="7" class="user-features__drop-icon"><use xlink:href="#icon-arrow"></use></svg>
+                                </a>
+                            </li>
+                        @else
+                            <li class="user-features__item">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="user-features__link">
+                                        {{ __('layout/header.Log Out') }}
+                                    </button>
+                                </form>
+                            </li>
+                        @endguest
                     </ul>
                 </div>
             </div>
