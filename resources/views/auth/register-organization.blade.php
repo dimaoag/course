@@ -1,6 +1,6 @@
 <?php
 
-$title = trans('auth/register.Title');
+$title = trans('auth/register-organization.Title') . 'organization';
 $description = '';
 $keywords = '';
 
@@ -18,15 +18,15 @@ $keywords = '';
 
     {{ Breadcrumbs::view('layouts.partials.breadcrumbs') }}
 
-<section class="registration registration--user">
+<section class="registration registration">
         <div class="registration__mobile-navigation">
             <div class="container registration__inner">
                 <ul class="registration__menu">
                     <li class="registration__item">
-                        <a href="#">{{ __('auth/register.Menu item user') }}</a>
+                        <a href="#">{{ __('auth/register-organization.Menu item user') }}</a>
                     </li>
                     <li class="registration__item registration__item--active">
-                        <a>{{ __('auth/register.Menu item organization') }}</a>
+                        <a>{{ __('auth/register-organization.Menu item organization') }}</a>
                     </li>
                 </ul>
             </div>
@@ -38,17 +38,17 @@ $keywords = '';
                         <div class="container">
                             <div class="registration__text">
                                 <h2>
-                                    {!! __('auth/register.Join now to') !!}  GetSkill
+                                    {!! __('auth/register-organization.Join now to') !!}  GetSkill
                                 </h2>
                                 <ul>
                                     <li>
-                                        {{ __('auth/register.Background phrase one') }}
+                                        {{ __('auth/register-organization.Background phrase one') }}
                                     </li>
                                     <li>
-                                        {{ __('auth/register.Background phrase two') }}
+                                        {{ __('auth/register-organization.Background phrase two') }}
                                     </li>
                                     <li>
-                                        {{ __('auth/register.Background phrase three') }}
+                                        {{ __('auth/register-organization.Background phrase three') }}
                                     </li>
                                 </ul>
                             </div>
@@ -59,11 +59,12 @@ $keywords = '';
                     <div class="container">
                         <form method="POST" action="{{ route('register', app()->getLocale()) }}" id="registration_user">
                             @csrf
+                            <input type="hidden" name="type" value="organization">
                             <div class="form form--registration">
                                 <p class="form__control">
                                     <?php $name = 'name' ?>
                                     <label for="registration_user_name" class="label">
-                                        {{ __('auth/register.First Name') }}
+                                        {{ __('auth/register-organization.First Name') }}
                                     </label>
                                     <input type="text" name="{{$name}}"
                                            class="input input--registration @error($name)is-invalid @enderror"
@@ -80,7 +81,7 @@ $keywords = '';
                                 <p class="form__control">
                                     <?php $name = 'email' ?>
                                     <label for="registration_user_email" class="label">
-                                        {{ __('auth/register.Email') }}
+                                        {{ __('auth/register-organization.Email') }}
                                     </label>
                                     <input type="email" name="{{$name}}" class="input input--registration @error($name)is-invalid @enderror"
                                            id="registration_user_email"
@@ -96,7 +97,7 @@ $keywords = '';
                                 <p class="form__control">
                                     <?php $name = 'password' ?>
                                     <label for="registration_user_password" class="label">
-                                        {{ __('auth/register.Password') }}
+                                        {{ __('auth/register-organization.Password') }}
                                     </label>
                                     <input type="password" name="{{$name}}"
                                            class="input input--registration @error($name)is-invalid @enderror"
@@ -112,7 +113,7 @@ $keywords = '';
                                 <p class="form__control">
                                     <?php $name = 'password_confirmation' ?>
                                     <label for="registration_user_password_repeat" class="label">
-                                        {{ __('auth/register.Password confirm') }}
+                                        {{ __('auth/register-organization.Password confirm') }}
                                     </label>
                                     <input type="password" name="{{$name}}"
                                            class="input input--registration @error($name)is-invalid @enderror"
@@ -131,16 +132,16 @@ $keywords = '';
                                            class="visually-hidden checkbox__input"
                                     >
                                     <label for="registration_privacy_policy" class="checkbox__label">
-                                        {{ __('auth/register.With') }}
+                                        {{ __('auth/register-organization.With') }}
                                         <a href="#" class="link">
-                                            {{ __('auth/register.Privacy policy') }}
+                                            {{ __('auth/register-organization.Privacy policy') }}
                                         </a>
-                                        {{ __('auth/register.Acquainted') }}
+                                        {{ __('auth/register-organization.Acquainted') }}
                                     </label>
                                 </p>
                                 <p class="form__control form__control--submit">
                                     <button type="submit" class="button button--registration">
-                                        {{ __('auth/register.Sign Up') }}
+                                        {{ __('auth/register-organization.Sign Up') }}
                                     </button>
                                 </p>
                             </div>

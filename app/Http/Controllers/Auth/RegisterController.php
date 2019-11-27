@@ -5,11 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Auth\RegisterRequest;
 use App\Model\User\Entity\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use App\UseCases\Auth\RegisterService;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -32,9 +29,14 @@ class RegisterController extends Controller
     }
 
 
-    public function showRegistrationForm()
+    public function showPersonRegistrationForm(Request $request)
     {
-        return view('auth.register');
+        return view('auth.register-person');
+    }
+
+    public function showOrganizationRegistrationForm(Request $request)
+    {
+        return view('auth.register-organization');
     }
 
     public function register(RegisterRequest $request)

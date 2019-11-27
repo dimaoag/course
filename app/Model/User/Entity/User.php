@@ -40,8 +40,8 @@ class User extends Authenticatable
     public const ROLE_MODERATOR = 'moderator';
     public const ROLE_ADMIN = 'admin';
 
-    public const TYPE_STUDENT = 'student';
-    public const TYPE_TEACHER = 'teacher';
+    public const TYPE_PERSON = 'person';
+    public const TYPE_ORGANIZATION = 'organization';
 
 
     protected $fillable = [
@@ -55,11 +55,12 @@ class User extends Authenticatable
 
 
 
-    public static function register(string $name, string $email, string $password): self
+    public static function register(string $name, string $email, string $password, string $type): self
     {
         return static::create([
             'name' => $name,
             'email' => $email,
+            'type' => $type,
             'password' => bcrypt($password),
             'verify_token' => Str::uuid(),
             'role' => self::ROLE_USER,
@@ -68,22 +69,22 @@ class User extends Authenticatable
     }
 
 
-    public static function registerByNetwork(string $network, string $identity): self
-    {
-        $user = static::create([
-            'name' => $identity,
-            'email' => null,
-            'password' => null,
-            'verify_token' => null,
-            'role' => self::ROLE_USER,
-            'status' => self::STATUS_ACTIVE,
-        ]);
-        $user->networks()->create([
-            'network' => $network,
-            'identity' => $identity,
-        ]);
-        return $user;
-    }
+//    public static function registerByNetwork(string $network, string $identity): self
+//    {
+//        $user = static::create([
+//            'name' => $identity,
+//            'email' => null,
+//            'password' => null,
+//            'verify_token' => null,
+//            'role' => self::ROLE_USER,
+//            'status' => self::STATUS_ACTIVE,
+//        ]);
+//        $user->networks()->create([
+//            'network' => $network,
+//            'identity' => $identity,
+//        ]);
+//        return $user;
+//    }
 
 
     public function attachNetwork(string $network, string $identity): void
@@ -105,17 +106,36 @@ class User extends Authenticatable
 
 
 
-    public static function new($name, $email): self
+    public static function new(string $name, string $email, string $type): self
     {
         return static::create([
             'name' => $name,
             'email' => $email,
+            'type' => $type,
             'password' => bcrypt(Str::random()),
             'role' => self::ROLE_USER,
             'status' => self::STATUS_ACTIVE,
         ]);
     }
 
+
+    public function isPerson(): bool
+    {
+        return $this->type === self::TYPE_PERSON;
+    }
+
+    public function isOrganization(): bool
+    {
+        return $this->type === self::TYPE_ORGANIZATION;
+    }
+
+    public static function typeList(): array
+    {
+        return [
+            self::TYPE_PERSON => 'Person',
+            self::TYPE_ORGANIZATION => 'Organization',
+        ];
+    }
 
 
     public function isWait(): bool

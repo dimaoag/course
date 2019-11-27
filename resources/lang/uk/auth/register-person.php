@@ -1,0 +1,21 @@
+<?php
+return [
+    'Title' => 'Реєстрація',
+    'Menu item user' => 'Користувач',
+    'Menu item organization' => 'Організація',
+    'Join now to' => 'Приєднуйтесь <br> до',
+    'Background phrase one' => '2351 офлайн та онлайн курсів від 800 шкіл',
+    'Background phrase two' => '830 реальних відгуків від учнів',
+    'Background phrase three' => 'комфортний пошук по фільтрам',
+    'First Name' => 'Ім`я',
+    'Email' => 'Email',
+    'Password' => 'Пароль',
+    'Password confirm' => 'Повторити пароль',
+    'With' => 'З',
+    'Privacy policy' => 'політикою конфіденційності',
+    'Acquainted' => 'ознайомлений',
+    'Sign Up' => 'Зареєструватися',
+    'Check your email and click on the link to verify.' => 'Перевірте Вашу пошту і перейдіть по посиланню в листі.',
+    'Sorry your link cannot be identified.' => 'Вибачте, Ваш запит не підтверджено.',
+    'Your e-mail is verified. You can now login.' => 'Ваш email успішно верифіковано. Ви можете увійти на сайт.',
+];

@@ -210,6 +210,7 @@
         </nav>
     </header>
     <main class="site-main">
+        @include('layouts.partials.alerts')
         @yield('breadcrumbs')
         @yield('content')
     </main>

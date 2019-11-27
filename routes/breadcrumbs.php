@@ -22,9 +22,14 @@ Breadcrumbs::register('login', function (Crumbs $crumbs) {
 });
 
 
-Breadcrumbs::register('register', function (Crumbs $crumbs) {
+Breadcrumbs::register('register-person', function (Crumbs $crumbs) {
     $crumbs->parent('home');
-    $crumbs->push(trans('auth/register.Title'), route('register', app()->getLocale()));
+    $crumbs->push(trans('auth/register-person.Title'), route('register-person', app()->getLocale()));
+});
+
+Breadcrumbs::register('register-organization', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push(trans('auth/register-organization.Title'), route('register-organization', app()->getLocale()));
 });
 
 Breadcrumbs::register('password.request', function (Crumbs $crumbs) {

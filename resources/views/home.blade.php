@@ -1,6 +1,18 @@
+<?php
+
+$title = trans('layout/header.Home');
+$description = '';
+$keywords = '';
+
+?>
+
 @extends('layouts.app')
 
-@section('breadcrumbs', '')
+@section('title', $title)
+@section('description', $description)
+@section('keywords', $keywords)
+
+
 
 @section('content')
 <div class="container">

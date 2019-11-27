@@ -25,7 +25,8 @@ class RegisterService
         $user = User::register(
             $request['name'],
             $request['email'],
-            $request['password']
+            $request['password'],
+            $request['type'],
         );
 
         $this->mailer->to($user->email)->send(new VerifyMail($user));

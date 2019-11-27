@@ -15,7 +15,8 @@ Route::group([
     Route::get('/', 'HomeController@index')->name('home');
 
     Auth::routes();
-    Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::get('/register-person', 'Auth\RegisterController@showPersonRegistrationForm')->name('register-person');
+    Route::get('/register-organization', 'Auth\RegisterController@showOrganizationRegistrationForm')->name('register-organization');
 
 
 });
