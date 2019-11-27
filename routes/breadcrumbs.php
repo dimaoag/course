@@ -10,9 +10,38 @@ use App\Model\Publisher\Category\Entity\Category as PublisherCategory;
 
 // Home
 
-//Breadcrumbs::register('home', function (Crumbs $crumbs) {
-//    $crumbs->push('Home', route('admin.home'));
-//});
+Breadcrumbs::register('home', function (Crumbs $crumbs) {
+    $crumbs->push(trans('layout/header.Home'), route('home', app()->getLocale()));
+});
+
+// Auth
+
+Breadcrumbs::register('login', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push(trans('auth/login.Title'), route('login', app()->getLocale()));
+});
+
+
+Breadcrumbs::register('login.phone', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push('Login', route('login.phone'));
+});
+
+Breadcrumbs::register('register', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push('Register', route('register'));
+});
+
+Breadcrumbs::register('password.request', function (Crumbs $crumbs) {
+    $crumbs->parent('login');
+    $crumbs->push('Reset Password', route('password.request'));
+});
+
+Breadcrumbs::register('password.reset', function (Crumbs $crumbs) {
+    $crumbs->parent('password.request');
+    $crumbs->push('Change', route('password.reset'));
+});
+
 
 
 #======================================================================

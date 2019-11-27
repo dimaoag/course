@@ -13,6 +13,7 @@ use Laravel\Passport\HasApiTokens;
  * @property int $id
  * @property string $name
  * @property string $email
+ * @property string $type
  * @property string $email_verified_at
  * @property string $password
  * @property string $remember_token
@@ -39,9 +40,12 @@ class User extends Authenticatable
     public const ROLE_MODERATOR = 'moderator';
     public const ROLE_ADMIN = 'admin';
 
+    public const TYPE_STUDENT = 'student';
+    public const TYPE_TEACHER = 'teacher';
+
 
     protected $fillable = [
-        'name', 'last_name', 'email',  'phone', 'password', 'verify_token', 'status', 'role'
+        'name', 'last_name', 'email',  'phone', 'password', 'verify_token', 'status', 'role', 'type'
     ];
 
 

@@ -1,73 +1,104 @@
+<?php
+
+$title = trans('auth/login.title');
+$description = '';
+$keywords = '';
+
+?>
+
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+@section('title', $title)
+@section('description', $description)
+@section('keywords', $keywords)
 
-                <div class="card-body">
+
+
+@section('content')
+
+    {{ Breadcrumbs::view('layouts.partials.breadcrumbs') }}
+
+
+    <section class="page-name">
+        <div class="container page-name__inner">
+            <h2 class="h2">{{ __('auth/login.Title') }}</h2>
+        </div>
+    </section>
+
+
+    <section class="enter">
+        <div class="container enter__inner">
+            <h2 class="visually-hidden">{{ __('auth/login.Form title') }}</h2>
+            <div class="enter__wrapper">
+                <div class="enter__form">
                     <form method="POST" action="{{ route('login', app()->getLocale()) }}">
                         @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
+                        <div class="form">
+                            <p class="form__control">
+                                <label for="registration_enter_email" class="label">E-mail</label>
+                                <input type="email" name="email"
+                                       class="input input--registration @error('email') is-invalid @enderror"
+                                       id="registration_enter_email" required autocomplete="email" autofocus
+                                       value="{{ old('email') }}"
+                                >
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
+                            </p>
+                            <p class="form__control">
+                                <label for="registration_enter_password" class="label">{{ __('auth/login.Password') }}</label>
+                                <input type="password" name="password"
+                                       class="input input--registration @error('email') is-invalid @enderror"
+                                       id="registration_enter_password" required
+                                >
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                            </p>
+                            <p class="form__control">
+                                <a href="{{ route('password.request', app()->getLocale()) }}" class="link link--enter">
+                                    {{ __('auth/login.Forgot your password?') }}
+                                </a>
+                            </p>
+                            <p class="form__control form__control--submit">
+                                <button type="submit" class="button button--enter">
+                                    {{ __('auth/login.Enter in your account') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request', app()->getLocale()) }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
+                            </p>
                         </div>
                     </form>
                 </div>
+                <div class="enter__by-social" data-text="{{ __('auth/login.Or') }}">
+                    <div class="by-social">
+                        <p class="by-social__text">
+                            {{ __('auth/login.Log in with') }}
+                        </p>
+                        <ul class="by-social__list">
+                            <li class="by-social__item">
+                                <a href="#" class="by-social__link by-social__link--google">
+                                    <svg width="20" height="19">
+                                        <use xlink:href="#icon-google"></use>
+                                    </svg>
+                                    {{ __('auth/login.Enter by Google') }}
+                                </a>
+                            </li>
+                            <li class="by-social__item">
+                                <a href="#" class="by-social__link by-social__link--facebook">
+                                    <svg width="19" height="19">
+                                        <use xlink:href="#icon-facebook"></use>
+                                    </svg>
+                                    {{ __('auth/login.Enter by Facebook') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
+
 @endsection

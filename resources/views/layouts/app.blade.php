@@ -12,9 +12,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    <meta name="description" content="Free Web tutorials">
-    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+
+    <title>@yield('title')</title>
+    <meta name="description" content="@yield('description')">
+    <meta name="keywords" content="@yield('keywords')">
 
     <link rel="preload" href="{{ asset('build/fonts/Roboto-Light.woff2') }}" as="font" type="font/woff2"
           crossorigin="anonymous">
@@ -124,7 +125,7 @@
                             </a>
                         </li>
                         <li class="user-features__item">
-                            <a href="#" class="user-features__link">
+                            <a href="{{ route('login', app()->getLocale()) }}" class="user-features__link">
                                 {{ __('layout/header.Log In') }}
                             </a>
                         </li>
@@ -197,6 +198,7 @@
         </nav>
     </header>
     <main class="site-main">
+        @yield('breadcrumbs')
         @yield('content')
     </main>
     <footer class="site-footer">
