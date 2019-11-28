@@ -16,8 +16,6 @@ $keywords = '';
 
 @section('content')
 
-    {{ Breadcrumbs::view('layouts.partials.breadcrumbs') }}
-
 <section class="registration registration--user">
         <div class="registration__mobile-navigation">
             <div class="container registration__inner">

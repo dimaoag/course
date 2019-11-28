@@ -211,6 +211,7 @@
     </header>
     <main class="site-main">
         @include('layouts.partials.alerts')
+        {{ Breadcrumbs::view('layouts.partials.breadcrumbs') }}
         @yield('breadcrumbs')
         @yield('content')
     </main>

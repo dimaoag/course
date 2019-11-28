@@ -13,8 +13,8 @@ $keywords = '';
 @section('keywords', $keywords)
 
 
-
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -27,4 +27,5 @@ $keywords = '';
         </div>
     </div>
 </div>
+
 @endsection

@@ -12,6 +12,10 @@
   border-width: 3px;
 }
 
+.load-file__title {
+  margin-top: 0;
+}
+
 @media (min-width: $laptop) {
   .load-file__input:hover + .load-file__content {
     border-width: 3px;

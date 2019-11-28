@@ -36,5 +36,6 @@
 
   .menu__link[href]:focus {
     color: rgba($white-color, 0.3);
+    background-color: $violet-dark-color;
   }
 }

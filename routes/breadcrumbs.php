@@ -11,7 +11,9 @@ use App\Model\Publisher\Category\Entity\Category as PublisherCategory;
 // Home
 
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
-    $crumbs->push(trans('layout/header.Home'), route('home', app()->getLocale()));
+    if (Route::currentRouteName() != 'home'){
+        $crumbs->push(trans('layout/header.Home'), route('home', app()->getLocale()));
+    }
 });
 
 // Auth
@@ -51,9 +53,9 @@ Breadcrumbs::register('cabinet.person.home', function (Crumbs $crumbs) {
     $crumbs->push(trans('cabinet/person/home.Title'), route('cabinet.person.home', app()->getLocale()));
 });
 
-Breadcrumbs::register('cabinet.profile.home', function (Crumbs $crumbs) {
-    $crumbs->parent('cabinet.home');
-    $crumbs->push('Profile', route('cabinet.profile.home'));
+Breadcrumbs::register('cabinet.person.profile.home', function (Crumbs $crumbs) {
+    $crumbs->parent('cabinet.person.home');
+    $crumbs->push(trans('cabinet/person/profile/home.Title'), route('cabinet.person.profile.home', app()->getLocale()));
 });
 
 Breadcrumbs::register('cabinet.profile.edit', function (Crumbs $crumbs) {

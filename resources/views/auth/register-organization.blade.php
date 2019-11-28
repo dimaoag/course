@@ -12,11 +12,7 @@ $keywords = '';
 @section('description', $description)
 @section('keywords', $keywords)
 
-
-
 @section('content')
-
-    {{ Breadcrumbs::view('layouts.partials.breadcrumbs') }}
 
 <section class="registration registration">
         <div class="registration__mobile-navigation">

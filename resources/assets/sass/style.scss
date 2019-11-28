@@ -1,4 +1,5 @@
 @import "global/normalize";
+@import "../libs/slick/slick.scss";
 @import "global/fonts.scss";
 @import "global/variables";
 @import "global/mixin";
@@ -35,3 +36,11 @@
 @import "block/cabinet";
 @import "block/menu-cabinet";
 @import "block/load-file";
+@import "block/tabs";
+@import "block/edit-information";
+@import "block/custom-select";
+@import "block/dynamic-form";
+@import "block/delete";
+@import "block/switcher";
+@import "block/select-standard";
+@import "block/cloned";

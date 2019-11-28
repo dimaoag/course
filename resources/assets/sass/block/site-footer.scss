@@ -110,6 +110,20 @@
   display: none;
 }
 
+@media (min-width: $iphone-breakpoint) {
+  .site-footer {
+    padding-top: 22px;
+  }
+
+  .site-footer__title-wrapper {
+    margin-bottom: 13px;
+  }
+
+  .site-footer__column {
+    margin-bottom: 12px;
+  }
+}
+
 @media (min-width: $horizontal-mobile) {
   .site-footer__inner-top {
     display: flex;

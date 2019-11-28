@@ -1,26 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\Cabinet;
+namespace App\Http\Controllers\Cabinet\Person;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\ProfileEditRequest;
-use App\UseCases\Profile\ProfileService;
+use App\Http\Controllers\AppController;
+//use App\Http\Requests\Auth\ProfileEditRequest;
+//use App\UseCases\Profile\ProfileService;
 use Illuminate\Support\Facades\Auth;
 
-class ProfileController extends Controller
+class ProfileController extends AppController
 {
     private $service;
 
-    public function __construct(ProfileService $service)
-    {
-        $this->service = $service;
-    }
+//    public function __construct(ProfileService $service)
+//    {
+//        $this->service = $service;
+//    }
 
     public function index()
     {
         $user = Auth::user();
 
-        return view('cabinet.profile.home', compact('user'));
+        return view('cabinet.person.profile.home', compact('user'));
     }
 
     public function edit()

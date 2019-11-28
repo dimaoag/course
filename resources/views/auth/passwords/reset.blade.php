@@ -15,9 +15,6 @@ $keywords = '';
 
 @section('content')
 
-    {{ Breadcrumbs::view('layouts.partials.breadcrumbs') }}
-
-
     <section class="page-name">
         <div class="container page-name__inner">
             <h2 class="h2">{{$title}}</h2>

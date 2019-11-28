@@ -16,7 +16,5 @@ $keywords = '';
 
 @section('content')
 
-    {{ Breadcrumbs::view('layouts.partials.breadcrumbs') }}
-
     <h1>Organization cabinet home page</h1>
 @endsection
