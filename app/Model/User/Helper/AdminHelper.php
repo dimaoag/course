@@ -15,6 +15,7 @@ class AdminHelper
         $labels = [
             'name' => 'Имя',
             'email' => 'Email',
+            'type' => 'Тип',
             'status' => 'Статус',
             'role' => 'Роль',
         ];
@@ -54,6 +55,22 @@ class AdminHelper
 
         if ($user->isModerator()){
             $out = '<span class="badge badge-warning">'. Arr::get(User::rolesList(), $user->role) .'</span>';
+        }
+
+        return $out;
+    }
+
+
+    public static function showTypeLabel(User $user): string
+    {
+        $out = '';
+
+        if ($user->isPerson()){
+            $out = '<span class="badge badge-secondary">'. Arr::get(User::typeList(), $user->type) .'</span>';
+        }
+
+        if ($user->isOrganization()){
+            $out = '<span class="badge badge-primary">'. Arr::get(User::typeList(), $user->type) .'</span>';
         }
 
         return $out;

@@ -39,6 +39,10 @@ class UsersController extends AdminController
             $query->where('status', $value);
         }
 
+        if (!empty($value = $request->get('type'))) {
+            $query->where('type', $value);
+        }
+
         if (!empty($value = $request->get('role'))) {
             $query->where('role', $value);
         }
@@ -47,20 +51,25 @@ class UsersController extends AdminController
 
         $statuses = User::statusesList();
         $roles = User::rolesList();
+        $types = User::typeList();
 
-        return view('admin.users.index', compact('users', 'statuses', 'roles'));
+        return view('admin.users.index', compact('users', 'statuses', 'roles', 'types'));
     }
 
     public function create()
     {
-        return view('admin.users.create');
+        $roles = User::rolesList();
+        $types = User::typeList();
+        return view('admin.users.create', compact('roles', 'types'));
     }
 
     public function store(CreateRequest $request)
     {
         $user = User::new(
-            $request['name'],
-            $request['email']
+            $request->name,
+            $request->email,
+            $request->type,
+            $request->role,
         );
 
         return redirect()->route('admin.users.show', $user);

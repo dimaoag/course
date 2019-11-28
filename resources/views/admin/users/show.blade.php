@@ -34,6 +34,10 @@ $title = $user->name
             <tr><th>{{ \App\Model\User\Helper\AdminHelper::getFormLabel('name') }}</th><td>{{ $user->name }}</td></tr>
             <tr><th>{{ \App\Model\User\Helper\AdminHelper::getFormLabel('email') }}</th><td>{{ $user->email }}</td></tr>
             <tr>
+                <th>{{ \App\Model\User\Helper\AdminHelper::getFormLabel('type') }}</th>
+                <td>{!! \App\Model\User\Helper\AdminHelper::showTypeLabel($user) !!}</td>
+            </tr>
+            <tr>
                 <th>{{ \App\Model\User\Helper\AdminHelper::getFormLabel('status') }}</th>
                 <td>{!! \App\Model\User\Helper\AdminHelper::showStatusLabel($user) !!}</td>
             </tr>

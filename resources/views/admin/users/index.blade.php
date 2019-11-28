@@ -33,6 +33,19 @@ $title = 'Все пользователи'
                         </div>
                     </div>
 
+                    <?php $name = 'type' ?>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\User\Helper\AdminHelper::getFormLabel($name) }}</label>
+                            <select id="{{$name}}" class="form-control" name="{{$name}}">
+                                <option value=""></option>
+                                @foreach ($types as $value => $label)
+                                    <option value="{{ $value }}"{{ $value === request('type') ? ' selected' : '' }}>{{ $label }}</option>
+                                @endforeach;
+                            </select>
+                        </div>
+                    </div>
+
                     <?php $name = 'status' ?>
                     <div class="col-sm-2">
                         <div class="form-group">
@@ -76,6 +89,7 @@ $title = 'Все пользователи'
         <tr>
             <th>{{ \App\Model\User\Helper\AdminHelper::getFormLabel('name') }}</th>
             <th>{{ \App\Model\User\Helper\AdminHelper::getFormLabel('email') }}</th>
+            <th>{{ \App\Model\User\Helper\AdminHelper::getFormLabel('type') }}</th>
             <th>{{ \App\Model\User\Helper\AdminHelper::getFormLabel('status') }}</th>
             <th>{{ \App\Model\User\Helper\AdminHelper::getFormLabel('role') }}</th>
         </tr>
@@ -86,6 +100,7 @@ $title = 'Все пользователи'
             <tr>
                 <td><a href="{{ route('admin.users.show', $user) }}">{{ $user->name }}</a></td>
                 <td>{{ $user->email }}</td>
+                <td>{!! \App\Model\User\Helper\AdminHelper::showTypeLabel($user) !!}</td>
                 <td>{!! \App\Model\User\Helper\AdminHelper::showStatusLabel($user) !!}</td>
                 <td>{!! \App\Model\User\Helper\AdminHelper::showRoleLabel($user) !!}</td>
             </tr>

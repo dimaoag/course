@@ -19,7 +19,7 @@ $title = 'Создать нового пользователя';
                         <?php $name = 'name' ?>
                         <div class="form-group">
                             <label for="{{$name}}" class="col-form-label">{{ \App\Model\User\Helper\AdminHelper::getFormLabel($name) }}</label>
-                            <input id="{{$name}}" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" value="{{ old($name) }}" required>
+                            <input id="{{$name}}" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" value="{{ old($name) }}" required autofocus>
                             @if ($errors->has($name))
                                 <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>
                             @endif
@@ -29,6 +29,32 @@ $title = 'Создать нового пользователя';
                         <div class="form-group">
                             <label for="{{$name}}" class="col-form-label">{{ \App\Model\User\Helper\AdminHelper::getFormLabel($name) }}</label>
                             <input id="{{$name}}" type="email" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" value="{{ old($name) }}" required>
+                            @if ($errors->has($name))
+                                <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>
+                            @endif
+                        </div>
+
+                        <?php $name = 'type' ?>
+                        <div class="form-group">
+                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\User\Helper\AdminHelper::getFormLabel($name) }}</label>
+                            <select id="{{$name}}" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" required>
+                                @foreach ($types as $value => $label)
+                                    <option value="{{ $value }}">{{ $label }}</option>
+                                @endforeach;
+                            </select>
+                            @if ($errors->has($name))
+                                <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>
+                            @endif
+                        </div>
+
+                        <?php $name = 'role' ?>
+                        <div class="form-group">
+                            <label for="{{$name}}" class="col-form-label">{{ \App\Model\User\Helper\AdminHelper::getFormLabel($name) }}</label>
+                            <select id="{{$name}}" class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}" required>
+                                @foreach ($roles as $value => $label)
+                                    <option value="{{ $value }}">{{ $label }}</option>
+                                @endforeach;
+                            </select>
                             @if ($errors->has($name))
                                 <span class="invalid-feedback"><strong>{{ $errors->first($name) }}</strong></span>
                             @endif

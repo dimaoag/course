@@ -106,14 +106,14 @@ class User extends Authenticatable
 
 
 
-    public static function new(string $name, string $email, string $type): self
+    public static function new(string $name, string $email, string $type, string $role): self
     {
         return static::create([
             'name' => $name,
             'email' => $email,
             'type' => $type,
             'password' => bcrypt(Str::random()),
-            'role' => self::ROLE_USER,
+            'role' => $role,
             'status' => self::STATUS_ACTIVE,
         ]);
     }

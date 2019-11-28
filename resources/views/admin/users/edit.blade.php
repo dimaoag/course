@@ -14,9 +14,9 @@ $title = $user->name;
         <div class="col-md-12">
             <div class="card card-primary">
                 <form method="POST" action="{{ route('admin.users.update', $user) }}">
-                    <div class="card-body">
                     @csrf
                     @method('PUT')
+                    <div class="card-body">
 
                         <?php $name = 'name' ?>
                         <div class="form-group">
