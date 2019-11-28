@@ -46,6 +46,21 @@ Model::take(3)->latest('created_at')->get();
 
 public function getRouteKeyName(){ return 'slug' }
 
+/ article table /
+
+public function author()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
+
+ relationships
+    - hasOne
+    - hasMany
+    - belongsTo
+    - belongsToMany
+    - morphMany
+    - morphToMany
+
 
 // Controller
 
@@ -58,6 +73,27 @@ Model::update(request()->validate([
     'title' => 'required|max:5',
     'title' => 'required|max:5',
 ]));
+
+
+// Factories
+
+$factory->define(Post::class, function (Faker $faker) {
+    return [
+        'title' => $faker->sentence,
+        'user_id' => factory(\App\User::class),
+        'description' => $faker->paragraph,
+    ];
+});
+
+
+// Migrations
+
+/ article table /
+$table->foreign('user_id')
+        ->references('id')
+        ->on('users')
+        ->onDelete('cascade')
+
 
 //tests
 php vendor/bin/phpunit

@@ -44,6 +44,37 @@ Breadcrumbs::register('password.reset', function (Crumbs $crumbs) {
 
 
 
+// Cabinet Person
+
+Breadcrumbs::register('cabinet.person.home', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push(trans('cabinet/person/home.Title'), route('cabinet.person.home', app()->getLocale()));
+});
+
+Breadcrumbs::register('cabinet.profile.home', function (Crumbs $crumbs) {
+    $crumbs->parent('cabinet.home');
+    $crumbs->push('Profile', route('cabinet.profile.home'));
+});
+
+Breadcrumbs::register('cabinet.profile.edit', function (Crumbs $crumbs) {
+    $crumbs->parent('cabinet.profile.home');
+    $crumbs->push('Edit', route('cabinet.profile.edit'));
+});
+
+Breadcrumbs::register('cabinet.profile.phone', function (Crumbs $crumbs) {
+    $crumbs->parent('cabinet.profile.home');
+    $crumbs->push('Phone', route('cabinet.profile.phone'));
+});
+
+
+// Cabinet Organization
+
+Breadcrumbs::register('cabinet.organization.home', function (Crumbs $crumbs) {
+    $crumbs->parent('home');
+    $crumbs->push(trans('cabinet/organization/home.Title'), route('cabinet.organization.home', app()->getLocale()));
+});
+
+
 #======================================================================
 // Admin
 

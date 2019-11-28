@@ -19,6 +19,50 @@ Route::group([
     Route::get('/register-organization', 'Auth\RegisterController@showOrganizationRegistrationForm')->name('register-organization');
 
 
+
+    Route::group(
+        [
+            'prefix' => 'cabinet-person',
+            'as' => 'cabinet.person.',
+            'namespace' => 'Cabinet\Person',
+            'middleware' => ['auth', 'can:cabinet-person'],
+        ],
+        function () {
+            Route::get('/', 'HomeController@index')->name('home');
+
+            Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
+                Route::get('/', 'ProfileController@index')->name('home');
+                Route::get('/edit', 'ProfileController@edit')->name('edit');
+                Route::put('/update', 'ProfileController@update')->name('update');
+            });
+
+            Route::get('favorites', 'FavoriteController@index')->name('favorites.index');
+            Route::delete('favorites/{advert}', 'FavoriteController@remove')->name('favorites.remove');
+
+        }
+    );
+
+
+    Route::group(
+        [
+            'prefix' => 'cabinet-organization',
+            'as' => 'cabinet.organization.',
+            'namespace' => 'Cabinet\Organization',
+            'middleware' => ['auth', 'can:cabinet-organization'],
+        ],
+        function () {
+            Route::get('/', 'HomeController@index')->name('home');
+
+            Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
+                Route::get('/', 'ProfileController@index')->name('home');
+                Route::get('/edit', 'ProfileController@edit')->name('edit');
+                Route::put('/update', 'ProfileController@update')->name('update');
+            });
+
+        }
+    );
+
+
 });
 
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');

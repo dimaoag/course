@@ -38,6 +38,14 @@ class AuthServiceProvider extends ServiceProvider
             return $user->isAdmin() || $user->isModerator();
         });
 
+        Gate::define('cabinet-person', function (User $user) {
+            return $user->isPerson() || $user->isOrganization();
+        });
+
+        Gate::define('cabinet-organization', function (User $user) {
+            return $user->isOrganization();
+        });
+
         Gate::define('admin-panel', function (User $user) {
             return $user->isAdmin() || $user->isModerator();
         });
