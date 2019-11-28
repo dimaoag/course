@@ -23,6 +23,42 @@ yarn add -s --dev font-awesome
 yarn run watch
 yarn run dev
 
+npm run dev
+
+// assets
+mix.browser('resources/sass/app.scss', 'public/css'); //webpack file
+{{ mix(css/app.css) }}
+
+// Route
+
+// Vies
+
+{{ Request::is('about') ?? null }}
+{{ Request::is('about*') ?? null }}
+{{ Request::is('about/*') ?? null }}
+
+// Eloquent
+
+Model::take(2)->get();
+Model::paginate(2);
+Model::latest('created_at')->limit(3)->get();
+Model::take(3)->latest('created_at')->get();
+
+public function getRouteKeyName(){ return 'slug' }
+
+
+// Controller
+
+Model::create(request()->validate([
+    'title' => 'required|max:5',
+    'title' => 'required|max:5',
+]));
+
+Model::update(request()->validate([
+    'title' => 'required|max:5',
+    'title' => 'required|max:5',
+]));
+
 //tests
 php vendor/bin/phpunit
 

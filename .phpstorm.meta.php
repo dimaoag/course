@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2019-11-26 13:38:43.
+    * Generated on 2019-11-28 08:12:48.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -47,7 +47,9 @@ namespace PHPSTORM_META {
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
         'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
+        'RealRashid\SweetAlert\Storage\SessionStore' => \RealRashid\SweetAlert\Storage\AlertSessionStore::class,
         'Whoops\Handler\HandlerInterface' => \Facade\Ignition\ErrorPage\IgnitionWhoopsHandler::class,
+        'alert' => \RealRashid\SweetAlert\Toaster::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
         'auth.driver' => \Illuminate\Auth\SessionGuard::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
@@ -211,7 +213,9 @@ namespace PHPSTORM_META {
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
         'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
+        'RealRashid\SweetAlert\Storage\SessionStore' => \RealRashid\SweetAlert\Storage\AlertSessionStore::class,
         'Whoops\Handler\HandlerInterface' => \Facade\Ignition\ErrorPage\IgnitionWhoopsHandler::class,
+        'alert' => \RealRashid\SweetAlert\Toaster::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
         'auth.driver' => \Illuminate\Auth\SessionGuard::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
@@ -375,7 +379,9 @@ namespace PHPSTORM_META {
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
         'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
+        'RealRashid\SweetAlert\Storage\SessionStore' => \RealRashid\SweetAlert\Storage\AlertSessionStore::class,
         'Whoops\Handler\HandlerInterface' => \Facade\Ignition\ErrorPage\IgnitionWhoopsHandler::class,
+        'alert' => \RealRashid\SweetAlert\Toaster::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
         'auth.driver' => \Illuminate\Auth\SessionGuard::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
@@ -539,7 +545,9 @@ namespace PHPSTORM_META {
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
         'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
+        'RealRashid\SweetAlert\Storage\SessionStore' => \RealRashid\SweetAlert\Storage\AlertSessionStore::class,
         'Whoops\Handler\HandlerInterface' => \Facade\Ignition\ErrorPage\IgnitionWhoopsHandler::class,
+        'alert' => \RealRashid\SweetAlert\Toaster::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
         'auth.driver' => \Illuminate\Auth\SessionGuard::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
@@ -703,7 +711,9 @@ namespace PHPSTORM_META {
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
         'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
+        'RealRashid\SweetAlert\Storage\SessionStore' => \RealRashid\SweetAlert\Storage\AlertSessionStore::class,
         'Whoops\Handler\HandlerInterface' => \Facade\Ignition\ErrorPage\IgnitionWhoopsHandler::class,
+        'alert' => \RealRashid\SweetAlert\Toaster::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
         'auth.driver' => \Illuminate\Auth\SessionGuard::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
@@ -867,7 +877,9 @@ namespace PHPSTORM_META {
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
         'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
+        'RealRashid\SweetAlert\Storage\SessionStore' => \RealRashid\SweetAlert\Storage\AlertSessionStore::class,
         'Whoops\Handler\HandlerInterface' => \Facade\Ignition\ErrorPage\IgnitionWhoopsHandler::class,
+        'alert' => \RealRashid\SweetAlert\Toaster::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
         'auth.driver' => \Illuminate\Auth\SessionGuard::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
@@ -1031,7 +1043,9 @@ namespace PHPSTORM_META {
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
         'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
+        'RealRashid\SweetAlert\Storage\SessionStore' => \RealRashid\SweetAlert\Storage\AlertSessionStore::class,
         'Whoops\Handler\HandlerInterface' => \Facade\Ignition\ErrorPage\IgnitionWhoopsHandler::class,
+        'alert' => \RealRashid\SweetAlert\Toaster::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
         'auth.driver' => \Illuminate\Auth\SessionGuard::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
@@ -1195,7 +1209,9 @@ namespace PHPSTORM_META {
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
         'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
+        'RealRashid\SweetAlert\Storage\SessionStore' => \RealRashid\SweetAlert\Storage\AlertSessionStore::class,
         'Whoops\Handler\HandlerInterface' => \Facade\Ignition\ErrorPage\IgnitionWhoopsHandler::class,
+        'alert' => \RealRashid\SweetAlert\Toaster::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
         'auth.driver' => \Illuminate\Auth\SessionGuard::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,

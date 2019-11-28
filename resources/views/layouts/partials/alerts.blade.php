@@ -1,23 +1,15 @@
 @if (session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
+    <?php toast(session('status'),'info') ?>
 @endif
 
 @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
+    <?php toast(session('success'),'success') ?>
 @endif
 
 @if (session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
+    <?php toast(session('error'),'error') ?>
 @endif
 
 @if (session('info'))
-    <div class="alert alert-info">
-        {{ session('info') }}
-    </div>
+    <?php toast(session('info'),'info') ?>
 @endif

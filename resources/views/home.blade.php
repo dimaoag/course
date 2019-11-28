@@ -20,7 +20,6 @@ $keywords = '';
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('home/index.Title') }}</div>
-
                 <div class="card-body">
                     Home page
                 </div>

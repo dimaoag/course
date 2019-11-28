@@ -331,7 +331,9 @@
 </div>
 
 {{--    <script src="{{ asset('build/js/scripts.min.js')}}"></script>--}}
+@include('sweetalert::alert')
 <script src="{{ mix('js/app.js', 'build') }}"></script>
+@yield('scripts')
 </body>
 </html>
 
