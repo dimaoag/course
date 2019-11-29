@@ -55,7 +55,7 @@ $keywords = '';
                             </span>
                         </label>
                         @error('image')
-                        <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
+                            <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
                         @enderror
                     </div>
                 @endif
@@ -70,7 +70,7 @@ $keywords = '';
                             <label for="user_cabinet_name" class="label">
                                 {{ __('cabinet/person/profile/home.First Name') }}
                             </label>
-                            <input type="text" name="name" class="input input--cabinet"
+                            <input type="text" name="name" class="input input--cabinet @error('name') is-invalid @enderror"
                                    id="user_cabinet_name" value="{{ old('name', $user->name) }}"
                             >
                             @error('name')
@@ -81,7 +81,7 @@ $keywords = '';
                             <label for="user_cabinet_phone" class="label">
                                 {{ __('cabinet/person/profile/home.Phone') }}
                             </label>
-                            <input type="tel" name="phone" class="input input--cabinet"
+                            <input type="tel" name="phone" class="input input--cabinet @error('phone') is-invalid @enderror"
                                    id="user_cabinet_phone" value="{{ old('phone', $user->phone) }}"
                                    placeholder="380 xxx xx xx xx"
                             >
@@ -105,7 +105,7 @@ $keywords = '';
                         </p>
                         <p>
                             <span>{{ __('cabinet/person/profile/home.Password') }}</span>
-                            <a href="#">{{ __('cabinet/person/profile/home.Edit') }}</a>
+                            <a href="{{ route('cabinet.person.profile.change-password', app()->getLocale()) }}">{{ __('cabinet/person/profile/home.Edit') }}</a>
                         </p>
                     </div>
                 </div>

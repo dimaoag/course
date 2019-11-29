@@ -2,8 +2,10 @@
 
 namespace App\UseCases\User\Profile;
 
+use App\Http\Requests\User\Profile\ChangePasswordRequest;
 use App\Model\User\Entity\User;
 use App\Http\Requests\User\Profile\ProfileEditRequest;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileService
 {
@@ -25,4 +27,12 @@ class ProfileService
 
         $user->update($data);
     }
+
+
+
+    public function changePassword(User $user, ChangePasswordRequest $request): void
+    {
+        $user->update(['password'=> Hash::make($request->password)]);
+    }
+
 }

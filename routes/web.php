@@ -34,6 +34,9 @@ Route::group([
                 Route::get('/', 'ProfileController@index')->name('home');
                 Route::put('/update', 'ProfileController@update')->name('update');
                 Route::delete('/delete-image', 'ProfileController@deleteImage')->name('delete-image');
+                Route::get('/change-password', 'ProfileController@changePasswordShowForm')->name('change-password');
+                Route::put('/change-password', 'ProfileController@changePassword')->name('update-password');
+
             });
 
             Route::get('favorites', 'FavoriteController@index')->name('favorites.index');

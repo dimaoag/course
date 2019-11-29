@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Cabinet\Person;
 
 use App\Http\Controllers\AppController;
+use App\Http\Requests\User\Profile\ChangePasswordRequest;
 use App\Http\Requests\User\Profile\ProfileEditRequest;
 use App\UseCases\User\Profile\ProfileService;
 use Illuminate\Support\Facades\Auth;
@@ -22,11 +23,6 @@ class ProfileController extends AppController
         return view('cabinet.person.profile.home', compact('user'));
     }
 
-    public function edit()
-    {
-        $user = Auth::user();
-        return view('cabinet.profile.edit', compact('user'));
-    }
 
     public function update(ProfileEditRequest $request)
     {
@@ -40,7 +36,6 @@ class ProfileController extends AppController
     }
 
 
-
     public function deleteImage()
     {
         $user = Auth::user();
@@ -51,4 +46,25 @@ class ProfileController extends AppController
         return redirect()->route('cabinet.person.profile.home', app()->getLocale())
             ->with('success', trans('cabinet/person/profile/home.Delete image success message'));
     }
+
+
+    public function changePasswordShowForm()
+    {
+        return view('cabinet.person.profile.change-password');
+    }
+
+
+
+    public function changePassword(ChangePasswordRequest $request)
+    {
+        try {
+            $this->service->changePassword(Auth::user(), $request);
+        } catch (\DomainException $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+        return redirect()->route('cabinet.person.profile.home', app()->getLocale())
+            ->with('success', trans('cabinet/person/profile/change-password.Password success changed'));
+    }
+
+
 }

@@ -58,15 +58,11 @@ Breadcrumbs::register('cabinet.person.profile.home', function (Crumbs $crumbs) {
     $crumbs->push(trans('cabinet/person/profile/home.Title'), route('cabinet.person.profile.home', app()->getLocale()));
 });
 
-Breadcrumbs::register('cabinet.profile.edit', function (Crumbs $crumbs) {
-    $crumbs->parent('cabinet.profile.home');
-    $crumbs->push('Edit', route('cabinet.profile.edit'));
+Breadcrumbs::register('cabinet.person.profile.change-password', function (Crumbs $crumbs) {
+    $crumbs->parent('cabinet.person.profile.home');
+    $crumbs->push(trans('cabinet/person/profile/change-password.Title'), route('cabinet.person.profile.change-password', app()->getLocale()));
 });
 
-Breadcrumbs::register('cabinet.profile.phone', function (Crumbs $crumbs) {
-    $crumbs->parent('cabinet.profile.home');
-    $crumbs->push('Phone', route('cabinet.profile.phone'));
-});
 
 
 // Cabinet Organization
