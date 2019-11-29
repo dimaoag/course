@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use  Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Laravel\Passport\HasApiTokens;
 
@@ -14,6 +15,8 @@ use Laravel\Passport\HasApiTokens;
  * @property string $name
  * @property string $email
  * @property string $type
+ * @property string $image
+ * @property string $phone
  * @property string $email_verified_at
  * @property string $password
  * @property string $remember_token
@@ -43,9 +46,10 @@ class User extends Authenticatable
     public const TYPE_PERSON = 'person';
     public const TYPE_ORGANIZATION = 'organization';
 
+    public const IMAGE_PATH = 'users';
 
     protected $fillable = [
-        'name', 'last_name', 'email',  'phone', 'password', 'verify_token', 'status', 'role', 'type'
+        'name', 'email', 'phone', 'password', 'verify_token', 'status', 'role', 'type', 'image'
     ];
 
 
@@ -199,7 +203,22 @@ class User extends Authenticatable
         ]);
     }
 
+    public function getImageUrl(): ?string
+    {
+        if ($this->image){
+            return Storage::disk('public')->url($this->image);
+        }
+        return  null;
+    }
 
+    public function deletePhoto(): void
+    {
+        if ($this->image){
+            if(Storage::disk('public')->exists($this->image)) {
+                Storage::disk('public')->delete($this->image);
+            }
+        }
+    }
 
 
     public function networks()

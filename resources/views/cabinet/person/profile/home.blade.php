@@ -4,7 +4,11 @@ $title = trans('cabinet/person/profile/home.Title');
 $description = '';
 $keywords = '';
 
+
+/** @var App\Model\User\Entity\User $user */
+
 ?>
+
 
 @extends('cabinet.person.template')
 
@@ -16,7 +20,18 @@ $keywords = '';
 @section('cabinet')
 
     <div class="cabinet__info-block">
-        <form action="user-cabinet.php" method="post" enctype="multipart/form-data">
+        @if($user->getImageUrl())
+            <img src="{{ $user->getImageUrl() }}" alt="" width="150">
+            <form method="POST" action="{{ route('cabinet.person.profile.delete-image', app()->getLocale()) }}">
+                @csrf
+                @method('DELETE')
+                <button type="submit">Delete photo</button>
+            </form>
+        @endif
+
+        <form method="POST" action="{{ route('cabinet.person.profile.update', app()->getLocale()) }}" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
             <div class="cabinet__form">
                 <div class="cabinet__page-name">
                     <h2 class="h2">{{ $title }}</h2>
@@ -28,8 +43,9 @@ $keywords = '';
                     </div>
                 </div>
                 <div class="cabinet__item cabinet__item--avatar">
+                @if(!$user->getImageUrl())
                     <div class="load-file">
-                        <input type="file" name="cabinet_user_avatar&quot;" id="cabinet_user_avatar" class="load-file__input visually-hidden">
+                        <input type="file" name="image" id="cabinet_user_avatar" class="load-file__input visually-hidden">
                         <label for="cabinet_user_avatar" class="load-file__content">
                             <svg width="40" height="42">
                                 <use xlink:href="#icon-download-file"></use>
@@ -38,7 +54,11 @@ $keywords = '';
                                 {{ __('cabinet/person/profile/home.Download avatar') }}
                             </span>
                         </label>
+                        @error('image')
+                        <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
+                        @enderror
                     </div>
+                @endif
                 </div>
                 <div class="cabinet__item">
                     <div class="cabinet__description">
@@ -50,13 +70,24 @@ $keywords = '';
                             <label for="user_cabinet_name" class="label">
                                 {{ __('cabinet/person/profile/home.First Name') }}
                             </label>
-                            <input type="text" name="user_cabinet_name" class="input input--cabinet" id="user_cabinet_name">
+                            <input type="text" name="name" class="input input--cabinet"
+                                   id="user_cabinet_name" value="{{ old('name', $user->name) }}"
+                            >
+                            @error('name')
+                                <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
+                            @enderror
                         </li>
                         <li>
                             <label for="user_cabinet_phone" class="label">
                                 {{ __('cabinet/person/profile/home.Phone') }}
                             </label>
-                            <input type="tel" name="user_cabinet_phone" class="input input--cabinet" id="user_cabinet_phone">
+                            <input type="tel" name="phone" class="input input--cabinet"
+                                   id="user_cabinet_phone" value="{{ old('phone', $user->phone) }}"
+                                   placeholder="380 xxx xx xx xx"
+                            >
+                            @error('phone')
+                                <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
+                            @enderror
                         </li>
                     </ul>
                 </div>

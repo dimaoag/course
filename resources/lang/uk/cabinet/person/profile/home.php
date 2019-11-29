@@ -12,4 +12,7 @@ return [
     'Email' => 'Email',
     'Edit' => 'Змінити',
     'Password' => 'Пароль',
+    'Success edit profile' => 'Дані успішно змінені.',
+    'Phone validation regex message error' => 'Невірний формат телефона',
+    'Delete image success message' => 'Фото успішно видаленно.',
 ];

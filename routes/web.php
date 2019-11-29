@@ -32,8 +32,8 @@ Route::group([
 
             Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
                 Route::get('/', 'ProfileController@index')->name('home');
-                Route::get('/edit', 'ProfileController@edit')->name('edit');
                 Route::put('/update', 'ProfileController@update')->name('update');
+                Route::delete('/delete-image', 'ProfileController@deleteImage')->name('delete-image');
             });
 
             Route::get('favorites', 'FavoriteController@index')->name('favorites.index');
@@ -58,7 +58,6 @@ Route::group([
                 Route::get('/edit', 'ProfileController@edit')->name('edit');
                 Route::put('/update', 'ProfileController@update')->name('update');
             });
-
         }
     );
 

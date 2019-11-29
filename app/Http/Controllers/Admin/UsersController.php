@@ -69,7 +69,7 @@ class UsersController extends AdminController
             $request->name,
             $request->email,
             $request->type,
-            $request->role,
+            $request->role
         );
 
         return redirect()->route('admin.users.show', $user);
@@ -101,6 +101,7 @@ class UsersController extends AdminController
 
     public function destroy(User $user)
     {
+        $user->deletePhoto();
         $user->delete();
 
         return redirect()->route('admin.users.index');

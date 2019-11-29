@@ -139,6 +139,16 @@
                             </li>
                         @else
                             <li class="user-features__item">
+                                <a href="{{ route('cabinet.organization.home', app()->getLocale()) }}" class="user-features__link">
+                                    Organization
+                                </a>
+                            </li>
+                            <li class="user-features__item">
+                                <a href="{{ route('cabinet.person.home', app()->getLocale()) }}" class="user-features__link">
+                                    Person
+                                </a>
+                            </li>
+                            <li class="user-features__item">
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <button type="submit" class="user-features__link">
