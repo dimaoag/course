@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Cabinet\Person;
 
 use App\Http\Controllers\AppController;
+use App\Http\Requests\User\Profile\ChangeEmailRequest;
 use App\Http\Requests\User\Profile\ChangePasswordRequest;
 use App\Http\Requests\User\Profile\ProfileEditRequest;
 use App\UseCases\User\Profile\ProfileService;
@@ -66,5 +67,22 @@ class ProfileController extends AppController
             ->with('success', trans('cabinet/person/profile/change-password.Password success changed'));
     }
 
+
+    public function changeEmailShowForm()
+    {
+        return view('cabinet.person.profile.change-email');
+    }
+
+
+    public function changeEmail(ChangeEmailRequest $request)
+    {
+        try {
+            $this->service->changeEmailRequest(Auth::user(), $request->email);
+        } catch (\DomainException $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+        return redirect()->route('cabinet.person.profile.home', app()->getLocale())
+            ->with('success', trans('cabinet/person/profile/change-email.Email changed success request'));
+    }
 
 }

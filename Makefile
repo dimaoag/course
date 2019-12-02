@@ -12,6 +12,9 @@ test:
 
 init: down build up
 
+enter:
+	docker-compose exec php-cli bash -i
+
 composer:
 	docker-compose run --rm php-cli composer
 

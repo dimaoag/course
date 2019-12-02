@@ -101,7 +101,7 @@ $keywords = '';
                     <div class="cabinet__details">
                         <p>
                             <span>{{ __('cabinet/person/profile/home.Email') }}</span>
-                            <a href="#">{{ __('cabinet/person/profile/home.Edit') }}</a>
+                            <a href="{{ route('cabinet.person.profile.change-email', app()->getLocale()) }}">{{ __('cabinet/person/profile/home.Edit') }}</a>
                         </p>
                         <p>
                             <span>{{ __('cabinet/person/profile/home.Password') }}</span>

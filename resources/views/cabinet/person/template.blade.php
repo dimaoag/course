@@ -30,12 +30,15 @@
                     </a>
                 </div>
                 <div class="menu-cabinet__item menu-cabinet__item--separator">
-                    <a href="{{ route('logout') }}" class="menu-cabinet__link">
-                        <svg width="21" height="21">
-                            <use xlink:href="#icon-cabinet-exit"></use>
-                        </svg>
-                        {{ __('cabinet/person/sidebar.Log out') }}
-                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="menu-cabinet__link">
+                            <svg width="21" height="21">
+                                <use xlink:href="#icon-cabinet-exit"></use>
+                            </svg>
+                            {{ __('cabinet/person/sidebar.Log out') }}
+                        </button>
+                    </form>
                 </div>
             </div>
             @yield('cabinet')

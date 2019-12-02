@@ -36,11 +36,11 @@ Route::group([
                 Route::delete('/delete-image', 'ProfileController@deleteImage')->name('delete-image');
                 Route::get('/change-password', 'ProfileController@changePasswordShowForm')->name('change-password');
                 Route::put('/change-password', 'ProfileController@changePassword')->name('update-password');
+                Route::get('/change-email', 'ProfileController@changeEmailShowForm')->name('change-email');
+                Route::put('/change-email', 'ProfileController@changeEmail')->name('update-email');
 
             });
 
-            Route::get('favorites', 'FavoriteController@index')->name('favorites.index');
-            Route::delete('favorites/{advert}', 'FavoriteController@remove')->name('favorites.remove');
 
         }
     );
@@ -56,11 +56,6 @@ Route::group([
         function () {
             Route::get('/', 'HomeController@index')->name('home');
 
-            Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
-                Route::get('/', 'ProfileController@index')->name('home');
-                Route::get('/edit', 'ProfileController@edit')->name('edit');
-                Route::put('/update', 'ProfileController@update')->name('update');
-            });
         }
     );
 
@@ -72,6 +67,7 @@ Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail
 Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 Route::get('/verify/{token}', 'Auth\RegisterController@verify')->name('verify');
+Route::get('/confirm-new-email/{token}', 'Auth\EmailController@confirmNewEmail')->name('confirm-new-email');
 
 
 

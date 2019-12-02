@@ -2,6 +2,7 @@
 
 namespace App\Model\User\Entity;
 
+use App\Events\User\UserEmailChangedRequest;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use  Illuminate\Notifications\Notifiable;
@@ -21,6 +22,8 @@ use Laravel\Passport\HasApiTokens;
  * @property string $password
  * @property string $remember_token
  * @property string $verify_token
+ * @property string $new_email
+ * @property string $new_email_token
 
  * @property string $status
  * @property string $role
@@ -239,6 +242,38 @@ class User extends Authenticatable
         return self::where('email', $identifier)->where('status', self::STATUS_ACTIVE)->first();
     }
 
+
+    public function requestEmailChanging(string $email, string $token): void
+    {
+        if (!$this->isActive()) {
+            throw new \DomainException('User is not active.');
+        }
+        if ($this->email == $email) {
+            throw new \DomainException('Email is already same.');
+        }
+        $this->new_email = $email;
+        $this->new_email_token = $token;
+
+        $this->save();
+
+        event(new UserEmailChangedRequest($this));
+    }
+
+
+    public function confirmEmailChanging(string $token): void
+    {
+        if (!$this->new_email) {
+            throw new \DomainException('Changing is not requested.');
+        }
+        if ($this->new_email_token !== $token) {
+            throw new \DomainException('Incorrect changing token.');
+        }
+        $this->email = $this->new_email;
+        $this->new_email = null;
+        $this->new_email_token = null;
+
+        $this->save();
+    }
 
 
 }
